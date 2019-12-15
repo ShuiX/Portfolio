@@ -14,9 +14,18 @@ class _PortfolioAppState extends State<PortfolioApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text(
-          'Bruh',
-          style: Theme.of(context).textTheme.body1,
+        child: FractionallySizedBox(
+          widthFactor: 0.6,
+          heightFactor: 0.6,
+          child: Stack(
+            children: <Widget>[
+              Align(
+                alignment: Alignment.topLeft,
+                child: Text('Thats Me'),
+              ),
+              Card(),
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
