@@ -5,7 +5,6 @@ import 'package:portfolio/pages/homeApp.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-
   static Color _mainColor = Color.fromRGBO(100, 255, 218, 1);
 
   static TextTheme _textTheme = TextTheme(
@@ -33,19 +32,28 @@ class MyApp extends StatelessWidget {
     buttonColor: _mainColor,
   );
 
+  static CardTheme _cardTheme = CardTheme(
+    color: Colors.black,
+    shape: RoundedRectangleBorder(
+      side: new BorderSide(color: _mainColor, width: 5.0),
+      borderRadius: BorderRadius.circular(12.0),
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Portfolio',
       theme: ThemeData(
-        primarySwatch: Colors.yellow,
         brightness: Brightness.dark,
+        backgroundColor: Colors.black,
         scaffoldBackgroundColor: Colors.black,
         appBarTheme: _appBarTheme,
         iconTheme: _iconThemeData,
         textTheme: _textTheme,
         buttonTheme: _buttonThemeData,
+        cardTheme: _cardTheme,
       ),
       home: PortfolioApp(
         title: 'Portfolio',
