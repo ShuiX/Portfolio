@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:video_player/video_player.dart';
 
 class PortfolioApp extends StatefulWidget {
   PortfolioApp({Key key, this.title}) : super(key: key);
@@ -10,6 +11,25 @@ class PortfolioApp extends StatefulWidget {
 }
 
 class _PortfolioAppState extends State<PortfolioApp> {
+  VideoPlayerController _videoPlayerController;
+
+  @override
+  void initState() {
+    super.initState();
+    _videoPlayerController = VideoPlayerController.asset('assets/videos/bgfade.mp4')
+      ..initialize();
+  }
+
+  void _playVideo() {
+    _videoPlayerController = VideoPlayerController.asset('assets/videos/bgfade.mp4')
+      ..initialize().then((_) {
+        _videoPlayerController.play();
+        _videoPlayerController.setLooping(true);
+        // Ensure the first frame is shown after the video is initialized
+        setState(() {});
+      });
+  }
+
   _desktopView(BuildContext context) {
     return Center(
       child: FractionallySizedBox(
@@ -89,17 +109,22 @@ class _PortfolioAppState extends State<PortfolioApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          if (constraints.maxWidth < 650) {
-            return _mobileView(context);
-          } else {
-            return _desktopView(context);
-          }
-        },
+      body: Stack(
+        children: <Widget>[
+          SizedBox.expand(
+            child: FittedBox(
+              fit: BoxFit.cover,
+              child: SizedBox(
+                width: _videoPlayerController.value.size?.width ?? 0,
+                height: _videoPlayerController.value.size?.height ?? 0,
+                child: VideoPlayer(_videoPlayerController),
+              ),
+            ),
+          )
+        ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: null,
+        onPressed: _playVideo,
         tooltip: '',
         child: Icon(Icons.add),
       ),
