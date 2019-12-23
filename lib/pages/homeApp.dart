@@ -11,23 +11,20 @@ class PortfolioApp extends StatefulWidget {
 }
 
 class _PortfolioAppState extends State<PortfolioApp> {
-  VideoPlayerController _videoPlayerController;
+  VideoPlayerController _videoPlayerController =
+      VideoPlayerController.asset('assets/videos/bgfade.mp4');
+
+  void _playVideo() {
+    setState(() {
+      _videoPlayerController.play();
+      _videoPlayerController.setLooping(true);
+    });
+  }
 
   @override
   void initState() {
     super.initState();
-    _videoPlayerController = VideoPlayerController.asset('assets/videos/bgfade.mp4')
-      ..initialize();
-  }
-
-  void _playVideo() {
-    _videoPlayerController = VideoPlayerController.asset('assets/videos/bgfade.mp4')
-      ..initialize().then((_) {
-        _videoPlayerController.play();
-        _videoPlayerController.setLooping(true);
-        // Ensure the first frame is shown after the video is initialized
-        setState(() {});
-      });
+    _videoPlayerController.initialize();
   }
 
   _desktopView(BuildContext context) {
@@ -120,13 +117,13 @@ class _PortfolioAppState extends State<PortfolioApp> {
                 child: VideoPlayer(_videoPlayerController),
               ),
             ),
-          )
+          ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _playVideo,
-        tooltip: '',
-        child: Icon(Icons.add),
+        tooltip: 'Play',
+        child: Icon(Icons.play_arrow),
       ),
     );
   }
