@@ -9,8 +9,9 @@ class MyApp extends StatelessWidget {
 
   static TextTheme _textTheme = TextTheme(
     title: TextStyle(
-      fontFamily: 'BlackChancery',
-      fontSize: 40,
+      color: _mainColor,
+    ),
+    subtitle: TextStyle(
       color: _mainColor,
     ),
     body1: TextStyle(

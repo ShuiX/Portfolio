@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
+import '../modules/LinearHalfCurve.dart';
+import '../modules/responsiveScreen.dart';
+
 class PortfolioApp extends StatefulWidget {
   PortfolioApp({Key key, this.title}) : super(key: key);
 
@@ -13,93 +16,109 @@ class PortfolioApp extends StatefulWidget {
 class _PortfolioAppState extends State<PortfolioApp> {
   VideoPlayerController _videoPlayerController =
       VideoPlayerController.asset('assets/videos/bgfade.mp4');
+  bool _startPortfolio = false;
+  ResponsiveScreen _responsiveScreen;
 
   void _playVideo() {
     setState(() {
-      _videoPlayerController.play();
-      _videoPlayerController.setLooping(true);
+      _startPortfolio = true;
     });
+    _videoPlayerController.play();
   }
 
   @override
   void initState() {
     super.initState();
     _videoPlayerController.initialize();
+    _videoPlayerController.setLooping(true);
   }
 
-  _desktopView(BuildContext context) {
-    return Center(
-      child: FractionallySizedBox(
-        widthFactor: 0.6,
+  Widget _startButton(BuildContext context, ResponsiveScreen responsiveScreen) {
+    return FlatButton(
+      child: Container(
+        padding: EdgeInsets.all(10),
         child: Column(
           children: <Widget>[
             Container(
-              alignment: Alignment.topLeft,
-              padding: EdgeInsets.only(bottom: 20),
+              alignment: Alignment.center,
+              padding: EdgeInsets.only(top: 200),
               child: Text(
-                'Thats Me',
-                style: Theme.of(context).textTheme.title,
+                "function init();",
+                style: TextStyle(
+                    color: Theme.of(context).textTheme.title.color,
+                    fontSize: responsiveScreen.titleSize),
+                textAlign: TextAlign.center,
               ),
             ),
-            Card(
-              child: Padding(
-                padding: EdgeInsets.all(20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Expanded(
-                      child: Text(
-                        "Eins",
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    VerticalDivider(),
-                    Expanded(
-                      child: Text(
-                        "Zwei",
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    VerticalDivider(),
-                    Expanded(
-                      child: Text(
-                        "Drei",
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ],
-                ),
+            Container(
+              alignment: Alignment.center,
+              child: Text(
+                "// Press anywhere to initialize",
+                style: TextStyle(
+                    color: Theme.of(context).textTheme.subtitle.color,
+                    fontSize: responsiveScreen.subTitleSize),
+                textAlign: TextAlign.center,
               ),
             ),
           ],
         ),
       ),
+      color: Colors.transparent,
+      hoverColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      disabledColor: Colors.transparent,
+      onPressed: () {
+        if (_startPortfolio == true) {
+          return null;
+        } else {
+          _playVideo();
+        }
+      },
     );
   }
 
-  _mobileView(BuildContext context) {
-    return Center(
-      child: FractionallySizedBox(
-        widthFactor: 0.85,
-        child: Column(
-          children: <Widget>[
-            Container(
-              alignment: Alignment.topLeft,
-              padding: EdgeInsets.only(bottom: 20),
-              child: Text(
-                'Thats Me',
-                style: Theme.of(context).textTheme.title,
-              ),
-            ),
-            Card(
-              child: Padding(
-                padding: EdgeInsets.all(20),
-                child: Text("Sample Text"),
-              ),
-            ),
-          ],
+  Widget _welcomePage(BuildContext context, ResponsiveScreen responsiveScreen) {
+    return Column(
+      children: <Widget>[
+        Container(
+          alignment: Alignment.topCenter,
+          padding: EdgeInsets.symmetric(vertical: 100, horizontal: 20),
+          child: Text(
+            "\"The World Is So Vast but Yet So Small\",",
+            style: TextStyle(
+                color: Theme.of(context).textTheme.title.color,
+                fontSize: responsiveScreen.titleSize),
+            textAlign: TextAlign.center,
+          ),
         ),
-      ),
+      ],
+    );
+  }
+
+  Widget _startPage(BuildContext context, ResponsiveScreen responsiveScreen) {
+    return AnimatedCrossFade(
+      duration: Duration(milliseconds: 2000),
+      firstChild: _startButton(context, responsiveScreen),
+      secondChild: _welcomePage(context, responsiveScreen),
+      crossFadeState: _startPortfolio
+          ? CrossFadeState.showSecond
+          : CrossFadeState.showFirst,
+      firstCurve: LinearHalfCurve(),
+      secondCurve: LinearHalfCurve().flipped,
+      layoutBuilder: (topChild, topChildKey, bottomChild, bottomChildKey) {
+        return Stack(
+          children: <Widget>[
+            Positioned(
+              key: bottomChildKey,
+              child: bottomChild,
+            ),
+            Positioned(
+              key: topChildKey,
+              child: topChild,
+            )
+          ],
+        );
+      },
     );
   }
 
@@ -118,12 +137,20 @@ class _PortfolioAppState extends State<PortfolioApp> {
               ),
             ),
           ),
+          LayoutBuilder(
+            builder: (context, constraint) {
+              if (constraint.maxWidth < 600) {
+                _responsiveScreen = ResponsiveScreen(30, 20);
+                return FractionallySizedBox(
+                  child: _startPage(context, _responsiveScreen),
+                );
+              } else {
+                _responsiveScreen = ResponsiveScreen(60, 30);
+                return _startPage(context, _responsiveScreen);
+              }
+            },
+          ),
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _playVideo,
-        tooltip: 'Play',
-        child: Icon(Icons.play_arrow),
       ),
     );
   }
