@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
-import '../modules/LinearHalfCurve.dart';
-import '../modules/responsiveScreen.dart';
+import 'package:portfolio/modules/LinearHalfCurve.dart';
+import 'package:portfolio/modules/responsiveScreen.dart';
 
 class PortfolioApp extends StatefulWidget {
   PortfolioApp({Key key, this.title}) : super(key: key);
@@ -15,7 +15,9 @@ class PortfolioApp extends StatefulWidget {
 
 class _PortfolioAppState extends State<PortfolioApp> {
   VideoPlayerController _videoPlayerController =
-      VideoPlayerController.asset('assets/videos/bgfade.mp4');
+      VideoPlayerController.asset('assets/videos/bgfade.mp4')
+        ..initialize()
+        ..setLooping(true);
   bool _startPortfolio = false;
   ResponsiveScreen _responsiveScreen;
 
@@ -26,16 +28,9 @@ class _PortfolioAppState extends State<PortfolioApp> {
     _videoPlayerController.play();
   }
 
-  @override
-  void initState() {
-    super.initState();
-    _videoPlayerController.initialize();
-    _videoPlayerController.setLooping(true);
-  }
-
-  Widget _startButton(BuildContext context, ResponsiveScreen responsiveScreen) {
+  Widget _startButton(BuildContext context) {
     return FlatButton(
-      child: Container(
+      child: Padding(
         padding: EdgeInsets.all(10),
         child: Column(
           children: <Widget>[
@@ -46,7 +41,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
                 "function init();",
                 style: TextStyle(
                     color: Theme.of(context).textTheme.title.color,
-                    fontSize: responsiveScreen.titleSize),
+                    fontSize: this._responsiveScreen.titleSize),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -56,7 +51,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
                 "// Press anywhere to initialize",
                 style: TextStyle(
                     color: Theme.of(context).textTheme.subtitle.color,
-                    fontSize: responsiveScreen.subTitleSize),
+                    fontSize: this._responsiveScreen.subTitleSize),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -77,29 +72,171 @@ class _PortfolioAppState extends State<PortfolioApp> {
     );
   }
 
-  Widget _welcomePage(BuildContext context, ResponsiveScreen responsiveScreen) {
-    return Column(
-      children: <Widget>[
-        Container(
-          alignment: Alignment.topCenter,
-          padding: EdgeInsets.symmetric(vertical: 100, horizontal: 20),
-          child: Text(
-            "\"The World Is So Vast but Yet So Small\",",
-            style: TextStyle(
-                color: Theme.of(context).textTheme.title.color,
-                fontSize: responsiveScreen.titleSize),
-            textAlign: TextAlign.center,
-          ),
+  Widget _aboutMeButton(BuildContext context, double size) {
+    return Container(
+      padding: EdgeInsets.only(top: 20),
+      child: FlatButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(40),
         ),
-      ],
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Icon(
+              Icons.person,
+              size: 150,
+              color: Theme.of(context).iconTheme.color,
+            ),
+            Text("Who Am I?"),
+          ],
+        ),
+        onPressed: () {
+          print("hey");
+        },
+      ),
+      width: MediaQuery.of(context).size.width * size,
+      height: 300,
     );
   }
 
-  Widget _startPage(BuildContext context, ResponsiveScreen responsiveScreen) {
+  Widget _myProjectsButton(BuildContext context, double size) {
+    return Container(
+      padding: EdgeInsets.only(top: 20),
+      child: FlatButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(40),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Icon(
+              Icons.work,
+              size: 150,
+              color: Theme.of(context).iconTheme.color,
+            ),
+            Text("My Works"),
+          ],
+        ),
+        onPressed: () {
+          print("hey");
+        },
+      ),
+      width: MediaQuery.of(context).size.width * size,
+      height: 300,
+    );
+  }
+
+  Widget _hobbyButton(BuildContext context, double size) {
+    return Container(
+      padding: EdgeInsets.only(top: 20),
+      child: FlatButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(40),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Icon(
+              Icons.bubble_chart,
+              size: 150,
+              color: Theme.of(context).iconTheme.color,
+            ),
+            Text("Hobby's"),
+          ],
+        ),
+        onPressed: () {
+          print("hey");
+        },
+      ),
+      width: MediaQuery.of(context).size.width * size,
+      height: 300,
+    );
+  }
+
+  Widget _portfolioMenu(BuildContext context) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          children: <Widget>[
+            Container(
+              alignment: Alignment.topCenter,
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 100),
+              child: Text(
+                "\"The World Is So Vast but Yet So Small\"",
+                style: TextStyle(
+                  color: Theme.of(context).textTheme.title.color,
+                  fontSize: this._responsiveScreen.titleSize,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 20,
+              ),
+              child: Text(
+                "This Is My Big Journey",
+                style: TextStyle(
+                  color: Theme.of(context).textTheme.subtitle.color,
+                  fontSize: this._responsiveScreen.subTitleSize,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
+            ),
+            Container(
+              color: Color.fromRGBO(100, 255, 218, 1),
+              width: MediaQuery.of(context).size.width * 0.6,
+              height: 2,
+            ),
+            LayoutBuilder(
+              builder: (context, constraint) {
+                if (constraint.maxWidth < 600) {
+                  return Column(
+                    children: <Widget>[
+                      _aboutMeButton(context, 0.6),
+                      Container(height: 20),
+                      _myProjectsButton(context, 0.6),
+                      Container(height: 20),
+                      _hobbyButton(context, 0.6),
+                    ],
+                  );
+                } else {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          _aboutMeButton(context, 0.2),
+                          Container(width: 20),
+                          _myProjectsButton(context, 0.2),
+                          Container(width: 20),
+                          _hobbyButton(context, 0.2),
+                        ],
+                      ),
+                    ],
+                  );
+                }
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _startPage(BuildContext context) {
     return AnimatedCrossFade(
       duration: Duration(milliseconds: 2000),
-      firstChild: _startButton(context, responsiveScreen),
-      secondChild: _welcomePage(context, responsiveScreen),
+      firstChild: _startButton(context),
+      secondChild: _portfolioMenu(context),
       crossFadeState: _startPortfolio
           ? CrossFadeState.showSecond
           : CrossFadeState.showFirst,
@@ -115,7 +252,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
             Positioned(
               key: topChildKey,
               child: topChild,
-            )
+            ),
           ],
         );
       },
@@ -141,12 +278,10 @@ class _PortfolioAppState extends State<PortfolioApp> {
             builder: (context, constraint) {
               if (constraint.maxWidth < 600) {
                 _responsiveScreen = ResponsiveScreen(30, 20);
-                return FractionallySizedBox(
-                  child: _startPage(context, _responsiveScreen),
-                );
+                return _startPage(context);
               } else {
                 _responsiveScreen = ResponsiveScreen(60, 30);
-                return _startPage(context, _responsiveScreen);
+                return _startPage(context);
               }
             },
           ),
