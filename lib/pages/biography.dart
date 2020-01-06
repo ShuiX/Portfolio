@@ -21,7 +21,7 @@ class Biography extends StatelessWidget {
     ResponsiveScreen responsiveScreen;
     return LayoutBuilder(
       builder: (context, constraint) {
-        if (constraint.maxWidth < 600) {
+        if (constraint.maxWidth < 840) {
           responsiveScreen = ResponsiveScreen(30, 20, 0.9, 0.9);
           return _responsiveCard(context, responsiveScreen);
         } else {

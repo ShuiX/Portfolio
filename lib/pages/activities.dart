@@ -5,12 +5,17 @@ import '../modules/responsiveScreen.dart';
 class Activities extends StatelessWidget {
   Widget _responsiveCard(
       BuildContext context, ResponsiveScreen responsiveScreen) {
-    return Card(
-      child: FractionallySizedBox(
-        heightFactor: responsiveScreen.heightFactor,
-        widthFactor: responsiveScreen.widthFactor,
-        child: Stack(
-          children: <Widget>[],
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Center(
+        child: Card(
+          child: FractionallySizedBox(
+            heightFactor: responsiveScreen.heightFactor,
+            widthFactor: responsiveScreen.widthFactor,
+            child: Stack(
+              children: <Widget>[],
+            ),
+          ),
         ),
       ),
     );
@@ -21,7 +26,7 @@ class Activities extends StatelessWidget {
     ResponsiveScreen responsiveScreen;
     return LayoutBuilder(
       builder: (context, constraint) {
-        if (constraint.maxWidth < 600) {
+        if (constraint.maxWidth < 840) {
           responsiveScreen = ResponsiveScreen(30, 20, 0.9, 0.9);
           return _responsiveCard(context, responsiveScreen);
         } else {

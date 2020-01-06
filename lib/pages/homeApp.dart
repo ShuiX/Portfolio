@@ -73,7 +73,8 @@ class _PortfolioAppState extends State<PortfolioApp> {
     );
   }
 
-  Widget _aboutMeButton(BuildContext context, double size) {
+  Widget _itemButton(BuildContext context, double size, String valueText,
+      IconData iconData, String navigation) {
     return Container(
       padding: EdgeInsets.only(top: 20),
       child: FlatButton(
@@ -85,71 +86,15 @@ class _PortfolioAppState extends State<PortfolioApp> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Icon(
-              Icons.person,
+              iconData,
               size: 150,
               color: Theme.of(context).iconTheme.color,
             ),
-            Text("Who Am I?"),
+            Text(valueText),
           ],
         ),
         onPressed: () {
-          print("hey");
-        },
-      ),
-      width: MediaQuery.of(context).size.width * size,
-      height: 300,
-    );
-  }
-
-  Widget _myProjectsButton(BuildContext context, double size) {
-    return Container(
-      padding: EdgeInsets.only(top: 20),
-      child: FlatButton(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(40),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Icon(
-              Icons.work,
-              size: 150,
-              color: Theme.of(context).iconTheme.color,
-            ),
-            Text("My Works"),
-          ],
-        ),
-        onPressed: () {
-          print("hey");
-        },
-      ),
-      width: MediaQuery.of(context).size.width * size,
-      height: 300,
-    );
-  }
-
-  Widget _hobbyButton(BuildContext context, double size) {
-    return Container(
-      padding: EdgeInsets.only(top: 20),
-      child: FlatButton(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(40),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Icon(
-              Icons.bubble_chart,
-              size: 150,
-              color: Theme.of(context).iconTheme.color,
-            ),
-            Text("Hobby's"),
-          ],
-        ),
-        onPressed: () {
-          print("hey");
+          Navigator.of(context).pushNamed(navigation);
         },
       ),
       width: MediaQuery.of(context).size.width * size,
@@ -199,11 +144,14 @@ class _PortfolioAppState extends State<PortfolioApp> {
                 if (constraint.maxWidth < 840) {
                   return Column(
                     children: <Widget>[
-                      _aboutMeButton(context, 0.6),
+                      _itemButton(context, 0.6, "Who Am I?", Icons.person,
+                          "/biography"),
                       Container(height: 20),
-                      _myProjectsButton(context, 0.6),
+                      _itemButton(
+                          context, 0.6, "My Works", Icons.work, "/projects"),
                       Container(height: 20),
-                      _hobbyButton(context, 0.6),
+                      _itemButton(context, 0.6, "Hobby's", Icons.bubble_chart,
+                          "/activities"),
                     ],
                   );
                 } else {
@@ -215,11 +163,14 @@ class _PortfolioAppState extends State<PortfolioApp> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
-                          _aboutMeButton(context, 0.2),
+                          this._itemButton(context, 0.2, "Who Am I?",
+                              Icons.person, "/biography"),
                           Container(width: 20),
-                          _myProjectsButton(context, 0.2),
+                          this._itemButton(context, 0.2, "My Works", Icons.work,
+                              "/projects"),
                           Container(width: 20),
-                          _hobbyButton(context, 0.2),
+                          this._itemButton(context, 0.2, "Hobby's",
+                              Icons.bubble_chart, "/activities"),
                         ],
                       ),
                     ],
@@ -236,8 +187,8 @@ class _PortfolioAppState extends State<PortfolioApp> {
   Widget _startPage(BuildContext context) {
     return AnimatedCrossFade(
       duration: Duration(milliseconds: 2000),
-      firstChild: _startButton(context),
-      secondChild: _portfolioMenu(context),
+      firstChild: this._startButton(context),
+      secondChild: this._portfolioMenu(context),
       crossFadeState: _startPortfolio
           ? CrossFadeState.showSecond
           : CrossFadeState.showFirst,
@@ -269,19 +220,19 @@ class _PortfolioAppState extends State<PortfolioApp> {
             child: FittedBox(
               fit: BoxFit.cover,
               child: SizedBox(
-                width: _videoPlayerController.value.size?.width ?? 0,
-                height: _videoPlayerController.value.size?.height ?? 0,
+                width: this._videoPlayerController.value.size?.width ?? 0,
+                height: this._videoPlayerController.value.size?.height ?? 0,
                 child: VideoPlayer(_videoPlayerController),
               ),
             ),
           ),
           LayoutBuilder(
             builder: (context, constraint) {
-              if (constraint.maxWidth < 600) {
-                _responsiveScreen = ResponsiveScreen(30, 20, 0.9, 0.9);
+              if (constraint.maxWidth < 840) {
+                this._responsiveScreen = ResponsiveScreen(30, 20, 0.9, 0.9);
                 return _startPage(context);
               } else {
-                _responsiveScreen = ResponsiveScreen(60, 30, 0.5, 0.7);
+                this._responsiveScreen = ResponsiveScreen(60, 30, 0.5, 0.7);
                 return _startPage(context);
               }
             },

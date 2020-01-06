@@ -7,7 +7,6 @@ import 'package:portfolio/pages/myProjects.dart';
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     //Here getting the arguement pushed by navigator.push
-    final args = settings.arguments;
 
     switch (settings.name) {
       case '/':
@@ -17,13 +16,28 @@ class RouteGenerator {
                 ));
         break;
       case '/projects':
-        return MaterialPageRoute(builder: (_) => Projects());
+        return PageRouteBuilder(
+          pageBuilder: (BuildContext context, _, __) {
+            return Projects();
+          },
+          opaque: false,
+        );
         break;
       case '/activities':
-        return MaterialPageRoute(builder: (_) => Activities());
+        return PageRouteBuilder(
+          pageBuilder: (BuildContext context, _, __) {
+            return Activities();
+          },
+          opaque: false,
+        );
         break;
       case '/biography':
-        return MaterialPageRoute(builder: (_) => Biography());
+        return PageRouteBuilder(
+          pageBuilder: (BuildContext context, _, __) {
+            return Biography();
+          },
+          opaque: false,
+        );
         break;
       default:
         return _errorRoute();
