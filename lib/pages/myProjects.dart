@@ -6,6 +6,7 @@ class Projects extends StatelessWidget {
   Widget _responsiveCard(
       BuildContext context, ResponsiveScreen responsiveScreen) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       body: Center(
         child: Card(
           child: FractionallySizedBox(
