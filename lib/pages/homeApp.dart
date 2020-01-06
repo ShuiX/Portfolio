@@ -17,7 +17,8 @@ class _PortfolioAppState extends State<PortfolioApp> {
   VideoPlayerController _videoPlayerController =
       VideoPlayerController.asset('assets/videos/bgfade.mp4')
         ..initialize()
-        ..setLooping(true);
+        ..setLooping(true)
+        ..setVolume(0);
   bool _startPortfolio = false;
   ResponsiveScreen _responsiveScreen;
 
@@ -158,7 +159,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
 
   Widget _portfolioMenu(BuildContext context) {
     return SingleChildScrollView(
-      child: Padding(
+      child: Container(
         padding: EdgeInsets.all(20),
         child: Column(
           children: <Widget>[
@@ -166,7 +167,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
               alignment: Alignment.topCenter,
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 100),
               child: Text(
-                "\"The World Is So Vast but Yet So Small\"",
+                "The World Is So Vast but Yet So Small",
                 style: TextStyle(
                   color: Theme.of(context).textTheme.title.color,
                   fontSize: this._responsiveScreen.titleSize,
@@ -195,7 +196,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
             ),
             LayoutBuilder(
               builder: (context, constraint) {
-                if (constraint.maxWidth < 600) {
+                if (constraint.maxWidth < 840) {
                   return Column(
                     children: <Widget>[
                       _aboutMeButton(context, 0.6),
