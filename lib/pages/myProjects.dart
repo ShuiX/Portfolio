@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import '../modules/responsiveScreen.dart';
 
 class Projects extends StatelessWidget {
-  ResponsiveScreen _responsiveScreen;
-
-  Widget _responsiveCard(BuildContext context) {
+  Widget _responsiveCard(
+      BuildContext context, ResponsiveScreen responsiveScreen) {
     return Card(
       child: FractionallySizedBox(
-        heightFactor: this._responsiveScreen.heightFactor,
-        widthFactor: this._responsiveScreen.widthFactor,
+        heightFactor: responsiveScreen.heightFactor,
+        widthFactor: responsiveScreen.widthFactor,
         child: Stack(
           children: <Widget>[],
         ),
@@ -19,14 +18,15 @@ class Projects extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ResponsiveScreen responsiveScreen;
     return LayoutBuilder(
       builder: (context, constraint) {
         if (constraint.maxWidth < 600) {
-          _responsiveScreen = ResponsiveScreen(30, 20, 0.9, 0.9);
-          return _responsiveCard(context);
+          responsiveScreen = ResponsiveScreen(30, 20, 0.9, 0.9);
+          return _responsiveCard(context, responsiveScreen);
         } else {
-          _responsiveScreen = ResponsiveScreen(60, 30, 0.5, 0.7);
-          return _responsiveCard(context);
+          responsiveScreen = ResponsiveScreen(60, 30, 0.5, 0.7);
+          return _responsiveCard(context, responsiveScreen);
         }
       },
     );

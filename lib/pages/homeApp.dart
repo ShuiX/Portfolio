@@ -278,10 +278,10 @@ class _PortfolioAppState extends State<PortfolioApp> {
           LayoutBuilder(
             builder: (context, constraint) {
               if (constraint.maxWidth < 600) {
-                _responsiveScreen = ResponsiveScreen(30, 20);
+                _responsiveScreen = ResponsiveScreen(30, 20, 0.9, 0.9);
                 return _startPage(context);
               } else {
-                _responsiveScreen = ResponsiveScreen(60, 30);
+                _responsiveScreen = ResponsiveScreen(60, 30, 0.5, 0.7);
                 return _startPage(context);
               }
             },
