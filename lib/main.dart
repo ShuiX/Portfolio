@@ -36,7 +36,6 @@ class MyApp extends StatelessWidget {
   static CardTheme _cardTheme = CardTheme(
     color: Colors.black,
     shape: RoundedRectangleBorder(
-      side: new BorderSide(color: _mainColor, width: 5.0),
       borderRadius: BorderRadius.circular(12.0),
     ),
   );

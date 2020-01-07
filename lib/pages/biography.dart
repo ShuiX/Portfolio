@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/modules/animatedBackground.dart';
 
 import 'package:portfolio/modules/responsiveScreen.dart';
 
@@ -12,6 +13,9 @@ class Biography extends StatelessWidget {
           widthFactor: responsiveScreen.widthFactor,
           child: Stack(
             children: <Widget>[
+              Positioned.fill(
+                child: AnimatedBackground(),
+              ),
               FlatButton.icon(
                 icon: Icon(Icons.close),
                 label: Text("Close"),
