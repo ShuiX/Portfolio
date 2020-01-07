@@ -5,16 +5,21 @@ import '../modules/responsiveScreen.dart';
 class Activities extends StatelessWidget {
   Widget _responsiveCard(
       BuildContext context, ResponsiveScreen responsiveScreen) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: Center(
-        child: Card(
-          child: FractionallySizedBox(
-            heightFactor: responsiveScreen.heightFactor,
-            widthFactor: responsiveScreen.widthFactor,
-            child: Stack(
-              children: <Widget>[],
-            ),
+    return Center(
+      child: Card(
+        child: FractionallySizedBox(
+          heightFactor: responsiveScreen.heightFactor,
+          widthFactor: responsiveScreen.widthFactor,
+          child: Stack(
+            children: <Widget>[
+              FlatButton.icon(
+                icon: Icon(Icons.close),
+                label: Text("Close"),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
           ),
         ),
       ),
@@ -30,7 +35,7 @@ class Activities extends StatelessWidget {
           responsiveScreen = ResponsiveScreen(30, 20, 0.9, 0.9);
           return _responsiveCard(context, responsiveScreen);
         } else {
-          responsiveScreen = ResponsiveScreen(60, 30, 0.5, 0.7);
+          responsiveScreen = ResponsiveScreen(60, 30, 0.7, 0.85);
           return _responsiveCard(context, responsiveScreen);
         }
       },

@@ -17,26 +17,29 @@ class RouteGenerator {
         break;
       case '/projects':
         return PageRouteBuilder(
-          pageBuilder: (BuildContext context, _, __) {
-            return Projects();
-          },
+          pageBuilder: (BuildContext context, _, __) => Projects(),
           opaque: false,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return _animationBuilder(animation, child, 0.0, 1.0);
+          },
         );
         break;
       case '/activities':
         return PageRouteBuilder(
-          pageBuilder: (BuildContext context, _, __) {
-            return Activities();
-          },
+          pageBuilder: (BuildContext context, _, __) => Activities(),
           opaque: false,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return _animationBuilder(animation, child, 1.0, 0.0);
+          },
         );
         break;
       case '/biography':
         return PageRouteBuilder(
-          pageBuilder: (BuildContext context, _, __) {
-            return Biography();
-          },
+          pageBuilder: (BuildContext context, _, __) => Biography(),
           opaque: false,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return _animationBuilder(animation, child, -1.0, 0.0);
+          },
         );
         break;
       default:
@@ -67,6 +70,18 @@ class RouteGenerator {
           ),
         );
       },
+    );
+  }
+
+  static dynamic _animationBuilder(Animation<double> animation, Widget child,
+      double bOffHor, double bOffVer) {
+    var begin = Offset(bOffHor, bOffVer);
+    var end = Offset.zero;
+    var curve = Curves.ease;
+    var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+    return SlideTransition(
+      position: animation.drive(tween),
+      child: child,
     );
   }
 }
