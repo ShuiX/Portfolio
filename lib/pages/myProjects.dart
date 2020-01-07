@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../modules/responsiveScreen.dart';
+import 'package:portfolio/modules/responsiveScreen.dart';
 
 class Projects extends StatelessWidget {
   Widget _responsiveCard(
