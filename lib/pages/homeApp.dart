@@ -40,9 +40,9 @@ class _PortfolioAppState extends State<PortfolioApp> {
               padding: EdgeInsets.only(top: 200),
               child: Text(
                 "function init();",
-                style: TextStyle(
-                    color: Theme.of(context).textTheme.title.color,
-                    fontSize: this._responsiveScreen.titleSize),
+                style: Theme.of(context).textTheme.title.copyWith(
+                      fontSize: this._responsiveScreen.titleSize,
+                    ),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -50,9 +50,9 @@ class _PortfolioAppState extends State<PortfolioApp> {
               alignment: Alignment.center,
               child: Text(
                 "// Press anywhere to initialize",
-                style: TextStyle(
-                    color: Theme.of(context).textTheme.subtitle.color,
-                    fontSize: this._responsiveScreen.subTitleSize),
+                style: Theme.of(context).textTheme.subtitle.copyWith(
+                      fontSize: this._responsiveScreen.subTitleSize,
+                    ),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -90,7 +90,10 @@ class _PortfolioAppState extends State<PortfolioApp> {
               size: 150,
               color: Theme.of(context).iconTheme.color,
             ),
-            Text(valueText),
+            Text(
+              valueText,
+              style: Theme.of(context).textTheme.body1,
+            ),
           ],
         ),
         onPressed: () {
@@ -113,10 +116,9 @@ class _PortfolioAppState extends State<PortfolioApp> {
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 100),
               child: Text(
                 "The World Is So Vast but Yet So Small",
-                style: TextStyle(
-                  color: Theme.of(context).textTheme.title.color,
-                  fontSize: this._responsiveScreen.titleSize,
-                ),
+                style: Theme.of(context).textTheme.title.copyWith(
+                      fontSize: this._responsiveScreen.titleSize,
+                    ),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -127,11 +129,10 @@ class _PortfolioAppState extends State<PortfolioApp> {
               ),
               child: Text(
                 "This Is My Big Journey",
-                style: TextStyle(
-                  color: Theme.of(context).textTheme.subtitle.color,
-                  fontSize: this._responsiveScreen.subTitleSize,
-                  fontStyle: FontStyle.italic,
-                ),
+                style: Theme.of(context).textTheme.subtitle.copyWith(
+                      fontSize: this._responsiveScreen.subTitleSize,
+                      fontStyle: FontStyle.italic,
+                    ),
               ),
             ),
             Container(
@@ -144,13 +145,13 @@ class _PortfolioAppState extends State<PortfolioApp> {
                 if (constraint.maxWidth < 840) {
                   return Column(
                     children: <Widget>[
-                      _itemButton(context, 0.6, "Who Am I?", Icons.person,
+                      _itemButton(context, 0.6, "Bio", Icons.person,
                           "/biography"),
                       Container(height: 20),
                       _itemButton(
-                          context, 0.6, "My Works", Icons.work, "/projects"),
+                          context, 0.6, "Projects", Icons.work, "/projects"),
                       Container(height: 20),
-                      _itemButton(context, 0.6, "Hobby's", Icons.bubble_chart,
+                      _itemButton(context, 0.6, "Activities", Icons.bubble_chart,
                           "/activities"),
                     ],
                   );
@@ -163,13 +164,13 @@ class _PortfolioAppState extends State<PortfolioApp> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
-                          this._itemButton(context, 0.2, "Who Am I?",
+                          this._itemButton(context, 0.2, "Bio",
                               Icons.person, "/biography"),
                           Container(width: 20),
-                          this._itemButton(context, 0.2, "My Works", Icons.work,
+                          this._itemButton(context, 0.2, "Projects", Icons.work,
                               "/projects"),
                           Container(width: 20),
-                          this._itemButton(context, 0.2, "Hobby's",
+                          this._itemButton(context, 0.2, "Activities",
                               Icons.bubble_chart, "/activities"),
                         ],
                       ),
@@ -229,10 +230,12 @@ class _PortfolioAppState extends State<PortfolioApp> {
           LayoutBuilder(
             builder: (context, constraint) {
               if (constraint.maxWidth < 840) {
-                this._responsiveScreen = ResponsiveScreen(30, 20, 0.9, 0.9);
+                this._responsiveScreen =
+                    ResponsiveScreen(titleSize: 30, subTitleSize: 20);
                 return _startPage(context);
               } else {
-                this._responsiveScreen = ResponsiveScreen(60, 30, 0.5, 0.7);
+                this._responsiveScreen =
+                    ResponsiveScreen(titleSize: 60, subTitleSize: 30);
                 return _startPage(context);
               }
             },

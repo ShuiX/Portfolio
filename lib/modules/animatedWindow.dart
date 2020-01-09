@@ -52,10 +52,12 @@ class AnimatedWindow extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraint) {
         if (constraint.maxWidth < 840) {
-          responsiveScreen = ResponsiveScreen(30, 20, 0.9, 0.9);
+          responsiveScreen =
+              ResponsiveScreen(widthFactor: 0.9, heightFactor: 0.9);
           return _responsiveCard(context, responsiveScreen);
         } else {
-          responsiveScreen = ResponsiveScreen(60, 30, 0.7, 0.85);
+          responsiveScreen =
+              ResponsiveScreen(widthFactor: 0.7, heightFactor: 0.85);
           return _responsiveCard(context, responsiveScreen);
         }
       },
