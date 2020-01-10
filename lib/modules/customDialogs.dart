@@ -14,7 +14,7 @@ class CustomDialog extends StatelessWidget {
         return simpleDialog(context);
         break;
       case 'little':
-        return aboutDialog(context);
+        return littleDialog(context);
         break;
       case 'redAlert':
         return redAlertDialog(context);
@@ -34,7 +34,6 @@ class CustomDialog extends StatelessWidget {
         heightFactor: 0.9,
         widthFactor: 0.9,
         child: Card(
-          color: Colors.white,
           child: Align(
             alignment: Alignment.topLeft,
             child: Padding(
@@ -44,7 +43,7 @@ class CustomDialog extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                  color: Theme.of(context).textTheme.title.color,
                 ),
               ),
             ),
@@ -122,13 +121,12 @@ class CustomDialog extends StatelessWidget {
     );
   }
 
-  aboutDialog(BuildContext context) {
+  littleDialog(BuildContext context) {
     return Center(
       child: Container(
         width: 300,
         height: 400,
         child: Card(
-          color: Colors.white,
           child: Align(
             alignment: Alignment.topLeft,
             child: Padding(
@@ -142,8 +140,7 @@ class CustomDialog extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        fontFamily: 'BlackChancery',
+                        color: Theme.of(context).textTheme.title.color,
                       ),
                       textAlign: TextAlign.justify,
                     ),
@@ -152,7 +149,7 @@ class CustomDialog extends StatelessWidget {
                     padding: EdgeInsets.only(bottom: 20),
                     child: Text(
                       content,
-                      style: TextStyle(color: Colors.black),
+                      style: Theme.of(context).textTheme.body1,
                     ),
                   ),
                   FlutterLogo(
@@ -162,7 +159,7 @@ class CustomDialog extends StatelessWidget {
                     padding: EdgeInsets.only(top: 20),
                     child: Text(
                       'Powered by Flutter',
-                      style: TextStyle(color: Colors.black),
+                      style: Theme.of(context).textTheme.body1,
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -193,10 +190,13 @@ class CustomDialog extends StatelessWidget {
           elevation: 0,
           child: Align(
             alignment: Alignment.topLeft,
-            child: Padding(
-              padding: EdgeInsets.only(top: 12, left: 15),
+            child: Container(
+              padding: EdgeInsets.only(top: 12),
               child: IconButton(
-                icon: Icon(Icons.arrow_back),
+                icon: Icon(
+                  Icons.arrow_back,
+                  color: Theme.of(context).iconTheme.color,
+                ),
                 iconSize: 50,
                 onPressed: () {
                   Navigator.of(context).pop();

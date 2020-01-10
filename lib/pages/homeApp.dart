@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio/modules/customDialogs.dart';
 import 'package:video_player/video_player.dart';
 
 import 'package:portfolio/modules/LinearHalfCurve.dart';
@@ -249,7 +250,14 @@ class _PortfolioAppState extends State<PortfolioApp> {
         ),
         backgroundColor: Colors.transparent,
         onPressed: () {
-          print("info");
+          showDialog(
+            context: context,
+            builder: (BuildContext context) => CustomDialog(
+              title: "Portfolio",
+              content: "Made with Flutter by Shajith Shantharuban. Please report any issues from the website to my E-Mail: \"shajith@me.com\"",
+              dialogType: "little",
+            ),
+          );
         },
       ),
     );
