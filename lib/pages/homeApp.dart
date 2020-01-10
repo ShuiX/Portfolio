@@ -145,14 +145,14 @@ class _PortfolioAppState extends State<PortfolioApp> {
                 if (constraint.maxWidth < 840) {
                   return Column(
                     children: <Widget>[
-                      _itemButton(context, 0.6, "Bio", Icons.person,
-                          "/biography"),
+                      _itemButton(
+                          context, 0.6, "Bio", Icons.person, "/biography"),
                       Container(height: 20),
                       _itemButton(
                           context, 0.6, "Projects", Icons.work, "/projects"),
                       Container(height: 20),
-                      _itemButton(context, 0.6, "Activities", Icons.bubble_chart,
-                          "/activities"),
+                      _itemButton(context, 0.6, "Activities",
+                          Icons.bubble_chart, "/activities"),
                     ],
                   );
                 } else {
@@ -164,8 +164,8 @@ class _PortfolioAppState extends State<PortfolioApp> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
-                          this._itemButton(context, 0.2, "Bio",
-                              Icons.person, "/biography"),
+                          this._itemButton(
+                              context, 0.2, "Bio", Icons.person, "/biography"),
                           Container(width: 20),
                           this._itemButton(context, 0.2, "Projects", Icons.work,
                               "/projects"),
@@ -241,6 +241,16 @@ class _PortfolioAppState extends State<PortfolioApp> {
             },
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(
+          Icons.info,
+          color: Colors.grey.shade500,
+        ),
+        backgroundColor: Colors.transparent,
+        onPressed: () {
+          print("info");
+        },
       ),
     );
   }
