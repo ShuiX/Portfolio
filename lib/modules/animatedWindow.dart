@@ -10,53 +10,39 @@ class AnimatedWindow extends StatelessWidget {
 
   Widget _responsiveCard(
       BuildContext context, ResponsiveScreen responsiveScreen) {
-    return Stack(
-      children: <Widget>[
-        FlatButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          hoverColor: Colors.transparent,
-          focusColor: Colors.transparent,
-          highlightColor: Colors.transparent,
-          color: Colors.transparent,
-          child: Container(),
-        ),
-        Center(
-          child: Card(
-            child: FractionallySizedBox(
-              heightFactor: responsiveScreen.heightFactor,
-              widthFactor: responsiveScreen.widthFactor,
-              child: Stack(
-                children: <Widget>[
-                  Positioned.fill(
-                    child: AnimatedBackground(),
+    return Center(
+      child: Card(
+        child: FractionallySizedBox(
+          heightFactor: responsiveScreen.heightFactor,
+          widthFactor: responsiveScreen.widthFactor,
+          child: Stack(
+            children: <Widget>[
+              Positioned.fill(
+                child: AnimatedBackground(),
+              ),
+              Align(
+                alignment: Alignment.topLeft,
+                child: FlatButton(
+                  child: Container(
+                    height: 50,
+                    child: Icon(Icons.close),
                   ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: FlatButton(
-                      child: Container(
-                        height: 50,
-                        child: Icon(Icons.close),
-                      ),
-                      color: Colors.red,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          bottomRight: Radius.circular(12.0),
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
+                  color: Colors.red,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(12.0),
                     ),
                   ),
-                  this.child,
-                ],
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
               ),
-            ),
+              this.child,
+            ],
           ),
         ),
-      ],
+      ),
     );
   }
 
