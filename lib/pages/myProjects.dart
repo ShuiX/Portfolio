@@ -2,12 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:portfolio/modules/animatedWindow.dart';
 import 'package:portfolio/modules/responsiveScreen.dart';
 
-class Projects extends StatelessWidget {
+class Projects extends StatefulWidget {
+  @override
+  _ProjectsState createState() => _ProjectsState();
+}
+
+class _ProjectsState extends State<Projects> {
+  Alignment _alignment = Alignment.center;
+  double _padding = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _timing();
+  }
+
+  void _timing() async {
+    Future.delayed(Duration(milliseconds: 750)).then((_) {
+      setState(() {
+        this._alignment = Alignment.topCenter;
+        this._padding = 55;
+      });
+    });
+  }
+
   Widget _content(BuildContext context, ResponsiveScreen responsiveScreen) {
     return Stack(
       children: <Widget>[
-        Align(
-          alignment: Alignment.center,
+        AnimatedContainer(
+          duration: Duration(milliseconds: 900),
+          padding: EdgeInsets.only(top: _padding),
+          alignment: _alignment,
+          curve: Curves.easeInOut,
           child: Text(
             "My Projects",
             style: Theme.of(context)
