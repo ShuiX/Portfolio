@@ -57,7 +57,7 @@ class AnimatedWindow extends StatelessWidget {
           return _responsiveCard(context, responsiveScreen);
         } else {
           responsiveScreen =
-              ResponsiveScreen(widthFactor: 0.7, heightFactor: 0.85);
+              ResponsiveScreen(widthFactor: 0.8, heightFactor: 0.9);
           return _responsiveCard(context, responsiveScreen);
         }
       },
