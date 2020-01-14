@@ -31,15 +31,6 @@ class _BiographyState extends State<Biography> {
     });
   }
 
-  Widget _verticalLine() {
-    return Container(
-      padding: EdgeInsets.only(),
-      height: MediaQuery.of(context).size.height * 0.5,
-      width: 2,
-      color: Color.fromRGBO(100, 255, 218, 1),
-    );
-  }
-
   Widget _title(BuildContext context, ResponsiveScreen responsiveScreen) {
     return AnimatedContainer(
       duration: Duration(milliseconds: 900),
@@ -82,7 +73,6 @@ class _BiographyState extends State<Biography> {
                       ),
                     ),
                   ),
-                  _verticalLine(),
                   Expanded(
                     child: Container(
                       alignment: Alignment.center,
@@ -93,7 +83,6 @@ class _BiographyState extends State<Biography> {
                       ),
                     ),
                   ),
-                  _verticalLine(),
                   Expanded(
                     child: Container(
                       alignment: Alignment.center,
