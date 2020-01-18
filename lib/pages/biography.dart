@@ -108,10 +108,50 @@ class _BiographyState extends State<Biography> {
         _title(context, responsiveScreen),
         Container(
           alignment: Alignment.topCenter,
-          padding: EdgeInsets.only(top: 80, right: 20, left: 20),
+          padding: EdgeInsets.only(top: 120, right: 20, left: 20),
           child: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[],
+            child: AnimatedOpacity(
+              duration: Duration(milliseconds: 1550),
+              opacity: _opacity,
+              curve: LinearHalfCurve().flipped,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    alignment: Alignment.center,
+                    child: Text(
+                      _contentText[0],
+                      style: Theme.of(context).textTheme.body1,
+                    ),
+                  ),
+                  Divider(
+                    color: Color.fromRGBO(100, 255, 218, 1),
+                    thickness: 1,
+                  ),
+                  Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Text(
+                      _contentText[1],
+                      style: Theme.of(context).textTheme.body1,
+                    ),
+                  ),
+                  Divider(
+                    color: Color.fromRGBO(100, 255, 218, 1),
+                    thickness: 1,
+                  ),
+                  Container(
+                    alignment: Alignment.center,
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Text(
+                      _contentText[2],
+                      style: Theme.of(context).textTheme.body1,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         )
