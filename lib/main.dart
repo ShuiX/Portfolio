@@ -10,9 +10,15 @@ class MyApp extends StatelessWidget {
   static TextTheme _textTheme = TextTheme(
     title: TextStyle(
       color: _mainColor,
+      fontSize: 60,
     ),
     subtitle: TextStyle(
       color: _mainColor,
+      fontSize: 30,
+    ),
+    headline: TextStyle(
+      color: _mainColor,
+      fontSize: 20,
     ),
     body1: TextStyle(
       color: _mainColor,

@@ -13,7 +13,17 @@ class _BiographyState extends State<Biography> {
   double _padding = 0;
   double _opacity = 0;
 
-  List<String> _contentText = ["Anfang", "Main", "Schluss"];
+  List<String> _contentText = [
+    "AnfangAnfangAnfangAnfangAnfangAnfangAnfangAnfangAnfangAnfang",
+    "MainMainMainMainMainMainMainMainMainMainMainMain",
+    "SchlussSchlussSchlussSchlussSchlussSchlussSchlussSchlussSchlussSchluss"
+  ];
+  List<String> _bioListText = [
+    "Residence: Kanton Zug",
+    "Age: 20",
+    "Field Of Work: Software Development",
+    "Languages: German, English, Tamil",
+  ];
 
   @override
   void initState() {
@@ -47,6 +57,28 @@ class _BiographyState extends State<Biography> {
     );
   }
 
+  Widget _bioList(BuildContext context, ResponsiveScreen responsiveScreen) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: _bioListText
+          .map((item) => new ListTile(
+                title: Text(
+                  item,
+                  style: Theme.of(context)
+                      .textTheme
+                      .body1
+                      .copyWith(fontSize: responsiveScreen.headlineSize),
+                ),
+                leading: Icon(
+                  Icons.fiber_manual_record,
+                  size: 20,
+                ),
+              ))
+          .toList(),
+    );
+  }
+
   Widget _desktopView(BuildContext context, ResponsiveScreen responsiveScreen) {
     return Stack(
       children: <Widget>[
@@ -64,13 +96,13 @@ class _BiographyState extends State<Biography> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Expanded(
+                    child: Container(),
+                  ),
+                  Expanded(
                     child: Container(
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       alignment: Alignment.center,
-                      child: Text(
-                        _contentText[0],
-                        style: Theme.of(context).textTheme.body1,
-                      ),
+                      child: _bioList(context, responsiveScreen),
                     ),
                   ),
                   Expanded(
@@ -121,10 +153,7 @@ class _BiographyState extends State<Biography> {
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     alignment: Alignment.center,
-                    child: Text(
-                      _contentText[0],
-                      style: Theme.of(context).textTheme.body1,
-                    ),
+                    child: _bioList(context, responsiveScreen),
                   ),
                   Divider(
                     color: Color.fromRGBO(100, 255, 218, 1),
@@ -166,12 +195,12 @@ class _BiographyState extends State<Biography> {
       child: LayoutBuilder(
         builder: (context, constraint) {
           if (constraint.maxWidth < 840) {
-            responsiveScreen =
-                ResponsiveScreen(titleSize: 30, subTitleSize: 20);
+            responsiveScreen = ResponsiveScreen(
+                titleSize: 30, subTitleSize: 20, headlineSize: 15);
             return this._mobileView(context, responsiveScreen);
           } else {
-            responsiveScreen =
-                ResponsiveScreen(titleSize: 60, subTitleSize: 30);
+            responsiveScreen = ResponsiveScreen(
+                titleSize: 60, subTitleSize: 30, headlineSize: 20);
             return this._desktopView(context, responsiveScreen);
           }
         },
