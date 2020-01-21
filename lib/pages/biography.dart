@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/modules/LinearHalfCurve.dart';
 import 'package:portfolio/modules/animatedWindow.dart';
+import 'package:portfolio/modules/contentData.dart';
 import 'package:portfolio/modules/responsiveScreen.dart';
 
 class Biography extends StatefulWidget {
@@ -12,18 +13,6 @@ class _BiographyState extends State<Biography> {
   Alignment _alignment = Alignment.center;
   double _padding = 0;
   double _opacity = 0;
-
-  List<String> _contentText = [
-    "AnfangAnfangAnfangAnfangAnfangAnfangAnfangAnfangAnfangAnfang",
-    "MainMainMainMainMainMainMainMainMainMainMainMain",
-    "SchlussSchlussSchlussSchlussSchlussSchlussSchlussSchlussSchlussSchluss"
-  ];
-  List<String> _bioListText = [
-    "Residence: Kanton Zug",
-    "Age: 20",
-    "Field Of Work: Software Development",
-    "Languages: German, English, Tamil",
-  ];
 
   @override
   void initState() {
@@ -61,7 +50,7 @@ class _BiographyState extends State<Biography> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
-      children: _bioListText
+      children: ContentData.bioListText
           .map((item) => new ListTile(
                 title: Text(
                   item,
@@ -110,7 +99,7 @@ class _BiographyState extends State<Biography> {
                       alignment: Alignment.center,
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
-                        _contentText[1],
+                        ContentData.contentText[0],
                         style: Theme.of(context).textTheme.body1,
                       ),
                     ),
@@ -120,7 +109,7 @@ class _BiographyState extends State<Biography> {
                       alignment: Alignment.center,
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
-                        _contentText[2],
+                        ContentData.contentText[1],
                         style: Theme.of(context).textTheme.body1,
                       ),
                     ),
@@ -163,7 +152,7 @@ class _BiographyState extends State<Biography> {
                     alignment: Alignment.center,
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
-                      _contentText[1],
+                      ContentData.contentText[0],
                       style: Theme.of(context).textTheme.body1,
                     ),
                   ),
@@ -175,7 +164,7 @@ class _BiographyState extends State<Biography> {
                     alignment: Alignment.center,
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
-                      _contentText[2],
+                      ContentData.contentText[1],
                       style: Theme.of(context).textTheme.body1,
                     ),
                   ),

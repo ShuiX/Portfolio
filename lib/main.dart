@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
     ),
     body1: TextStyle(
       color: _mainColor,
+      fontSize: 15,
     ),
   );
 
