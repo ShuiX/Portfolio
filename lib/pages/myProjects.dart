@@ -38,7 +38,7 @@ class _ProjectsState extends State<Projects> {
             "My Projects",
             style: Theme.of(context)
                 .textTheme
-                .title
+                .headline6
                 .copyWith(fontSize: responsiveScreen.titleSize),
           ),
         ),

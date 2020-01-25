@@ -8,19 +8,19 @@ class MyApp extends StatelessWidget {
   static Color _mainColor = Color.fromRGBO(100, 255, 218, 1);
 
   static TextTheme _textTheme = TextTheme(
-    title: TextStyle(
+    headline6: TextStyle(
       color: _mainColor,
       fontSize: 60,
     ),
-    subtitle: TextStyle(
+    subtitle1: TextStyle(
       color: _mainColor,
       fontSize: 30,
     ),
-    headline: TextStyle(
+    headline5: TextStyle(
       color: _mainColor,
       fontSize: 20,
     ),
-    body1: TextStyle(
+    bodyText1: TextStyle(
       color: _mainColor,
       fontSize: 15,
     ),

@@ -9,10 +9,10 @@ My passion for technology already began when i was a kid. Even though it was the
   ];
 
   static List<String> bioListText = [
-    "Name: Shajith Shantharuban",
+    "Name: Shajith",
     "Residence: Zug, Switzerland",
     "Age: 20",
-    "Field Of Work: Software Development",
-    "Languages: German, English, Tamil",
+    "Speak: German, English, Tamil",
+    "Software Developer",
   ];
 }

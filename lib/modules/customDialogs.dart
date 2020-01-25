@@ -43,7 +43,7 @@ class CustomDialog extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
-                  color: Theme.of(context).textTheme.title.color,
+                  color: Theme.of(context).textTheme.headline6.color,
                 ),
               ),
             ),
@@ -140,7 +140,7 @@ class CustomDialog extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
-                        color: Theme.of(context).textTheme.title.color,
+                        color: Theme.of(context).textTheme.headline6.color,
                       ),
                       textAlign: TextAlign.justify,
                     ),
@@ -149,7 +149,7 @@ class CustomDialog extends StatelessWidget {
                     padding: EdgeInsets.only(bottom: 20),
                     child: Text(
                       content,
-                      style: Theme.of(context).textTheme.body1,
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
                   ),
                   FlutterLogo(
@@ -159,7 +159,7 @@ class CustomDialog extends StatelessWidget {
                     padding: EdgeInsets.only(top: 20),
                     child: Text(
                       'Powered by Flutter',
-                      style: Theme.of(context).textTheme.body1,
+                      style: Theme.of(context).textTheme.bodyText1,
                       textAlign: TextAlign.center,
                     ),
                   ),

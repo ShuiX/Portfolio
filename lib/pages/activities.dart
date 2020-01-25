@@ -38,7 +38,7 @@ class _ActivitiesState extends State<Activities> {
             "Activities",
             style: Theme.of(context)
                 .textTheme
-                .title
+                .headline6
                 .copyWith(fontSize: responsiveScreen.titleSize),
           ),
         ),

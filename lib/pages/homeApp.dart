@@ -41,7 +41,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
               padding: EdgeInsets.only(top: 200),
               child: Text(
                 "function init();",
-                style: Theme.of(context).textTheme.title.copyWith(
+                style: Theme.of(context).textTheme.bodyText1.copyWith(
                       fontSize: this._responsiveScreen.titleSize,
                     ),
                 textAlign: TextAlign.center,
@@ -51,7 +51,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
               alignment: Alignment.center,
               child: Text(
                 "// Press anywhere to initialize",
-                style: Theme.of(context).textTheme.subtitle.copyWith(
+                style: Theme.of(context).textTheme.subtitle1.copyWith(
                       fontSize: this._responsiveScreen.subTitleSize,
                     ),
                 textAlign: TextAlign.center,
@@ -93,7 +93,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
             ),
             Text(
               valueText,
-              style: Theme.of(context).textTheme.body1,
+              style: Theme.of(context).textTheme.bodyText1,
             ),
           ],
         ),
@@ -117,7 +117,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 100),
               child: Text(
                 "The World Is So Vast but Yet So Small",
-                style: Theme.of(context).textTheme.title.copyWith(
+                style: Theme.of(context).textTheme.headline6.copyWith(
                       fontSize: this._responsiveScreen.titleSize,
                     ),
                 textAlign: TextAlign.center,
@@ -130,7 +130,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
               ),
               child: Text(
                 "This Is My Big Journey",
-                style: Theme.of(context).textTheme.subtitle.copyWith(
+                style: Theme.of(context).textTheme.subtitle1.copyWith(
                       fontSize: this._responsiveScreen.subTitleSize,
                       fontStyle: FontStyle.italic,
                     ),

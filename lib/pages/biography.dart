@@ -40,7 +40,7 @@ class _BiographyState extends State<Biography> {
         "Biography",
         style: Theme.of(context)
             .textTheme
-            .title
+            .headline6
             .copyWith(fontSize: responsiveScreen.titleSize),
       ),
     );
@@ -56,7 +56,7 @@ class _BiographyState extends State<Biography> {
                   item,
                   style: Theme.of(context)
                       .textTheme
-                      .body1
+                      .headline6
                       .copyWith(fontSize: responsiveScreen.headlineSize),
                 ),
                 leading: Icon(
@@ -74,7 +74,7 @@ class _BiographyState extends State<Biography> {
         _title(context, responsiveScreen),
         Container(
           alignment: Alignment.topCenter,
-          padding: EdgeInsets.only(top: 150, right: 20, left: 20),
+          padding: EdgeInsets.only(top: 160, right: 20, left: 20),
           child: SingleChildScrollView(
             child: AnimatedOpacity(
               duration: Duration(milliseconds: 1550),
@@ -100,7 +100,7 @@ class _BiographyState extends State<Biography> {
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
                         ContentData.contentText[0],
-                        style: Theme.of(context).textTheme.body1,
+                        style: Theme.of(context).textTheme.bodyText1,
                       ),
                     ),
                   ),
@@ -110,7 +110,7 @@ class _BiographyState extends State<Biography> {
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
                         ContentData.contentText[1],
-                        style: Theme.of(context).textTheme.body1,
+                        style: Theme.of(context).textTheme.bodyText1,
                       ),
                     ),
                   ),
@@ -153,7 +153,7 @@ class _BiographyState extends State<Biography> {
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
                       ContentData.contentText[0],
-                      style: Theme.of(context).textTheme.body1,
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
                   ),
                   Divider(
@@ -165,7 +165,7 @@ class _BiographyState extends State<Biography> {
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
                       ContentData.contentText[1],
-                      style: Theme.of(context).textTheme.body1,
+                      style: Theme.of(context).textTheme.bodyText1,
                     ),
                   ),
                 ],
@@ -183,7 +183,7 @@ class _BiographyState extends State<Biography> {
     return AnimatedWindow(
       child: LayoutBuilder(
         builder: (context, constraint) {
-          if (constraint.maxWidth < 840) {
+          if (constraint.maxWidth < 1220) {
             responsiveScreen = ResponsiveScreen(
                 titleSize: 30, subTitleSize: 20, headlineSize: 15);
             return this._mobileView(context, responsiveScreen);
