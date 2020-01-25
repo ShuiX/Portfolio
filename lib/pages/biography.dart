@@ -90,13 +90,11 @@ class _BiographyState extends State<Biography> {
                   Expanded(
                     child: Container(
                       padding: EdgeInsets.symmetric(horizontal: 20),
-                      alignment: Alignment.center,
                       child: _bioList(context, responsiveScreen),
                     ),
                   ),
                   Expanded(
                     child: Container(
-                      alignment: Alignment.center,
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
                         ContentData.contentText[0],
@@ -106,7 +104,6 @@ class _BiographyState extends State<Biography> {
                   ),
                   Expanded(
                     child: Container(
-                      alignment: Alignment.center,
                       padding: EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
                         ContentData.contentText[1],
@@ -172,7 +169,7 @@ class _BiographyState extends State<Biography> {
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }
