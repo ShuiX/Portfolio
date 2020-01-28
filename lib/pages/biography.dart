@@ -74,7 +74,7 @@ class _BiographyState extends State<Biography> {
         _title(context, responsiveScreen),
         Container(
           alignment: Alignment.topCenter,
-          padding: EdgeInsets.only(top: 160, right: 20, left: 20),
+          padding: EdgeInsets.only(top: 140, right: 20, left: 20),
           child: SingleChildScrollView(
             child: AnimatedOpacity(
               duration: Duration(milliseconds: 1550),
@@ -85,7 +85,16 @@ class _BiographyState extends State<Biography> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   Expanded(
-                    child: Container(),
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Image.asset(
+                        'assets/images/fieldphoto.png',
+                        height: MediaQuery.of(context).size.height * 0.64,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
                   Expanded(
                     child: Container(
@@ -126,7 +135,7 @@ class _BiographyState extends State<Biography> {
         _title(context, responsiveScreen),
         Container(
           alignment: Alignment.topCenter,
-          padding: EdgeInsets.only(top: 120, right: 20, left: 20),
+          padding: EdgeInsets.only(top: 100, right: 20, left: 20),
           child: SingleChildScrollView(
             child: AnimatedOpacity(
               duration: Duration(milliseconds: 1550),
@@ -136,6 +145,20 @@ class _BiographyState extends State<Biography> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
+                  Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(25),
+                    ),
+                    child: Image.asset(
+                      "assets/images/fieldphoto.png",
+                      height: MediaQuery.of(context).size.height * 0.75,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  Divider(
+                    color: Color.fromRGBO(100, 255, 218, 1),
+                    thickness: 1,
+                  ),
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 20),
                     alignment: Alignment.center,
