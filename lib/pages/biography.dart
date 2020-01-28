@@ -180,7 +180,7 @@ class _BiographyState extends State<Biography> {
     return AnimatedWindow(
       child: LayoutBuilder(
         builder: (context, constraint) {
-          if (constraint.maxWidth < 1220) {
+          if (constraint.maxWidth < 720) {
             responsiveScreen = ResponsiveScreen(
                 titleSize: 30, subTitleSize: 20, headlineSize: 15);
             return this._mobileView(context, responsiveScreen);
