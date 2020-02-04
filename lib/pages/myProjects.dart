@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/modules/LinearHalfCurve.dart';
+import 'package:portfolio/modules/animatedBackground.dart';
 import 'package:portfolio/modules/animatedWindow.dart';
 import 'package:portfolio/modules/responsiveScreen.dart';
 
@@ -9,8 +10,6 @@ class Projects extends StatefulWidget {
 }
 
 class _ProjectsState extends State<Projects> {
-  Alignment _alignment = Alignment.center;
-  double _padding = 0;
   double _opacity = 0;
   Widget _animatedWidget;
 
@@ -23,32 +22,53 @@ class _ProjectsState extends State<Projects> {
   void _timing() async {
     Future.delayed(Duration(milliseconds: 750)).then((_) {
       setState(() {
-        this._alignment = Alignment.topCenter;
-        this._padding = 55;
         this._opacity = 1;
       });
     });
   }
 
+  void _switchWidget(ResponsiveScreen responsiveScreen) {
+    setState(() {
+      _animatedWidget = _projectSurvey(context, responsiveScreen);
+    });
+  }
+
   Widget _projectSurvey(
       BuildContext context, ResponsiveScreen responsiveScreen) {
-    return Container();
+    return Card(
+      child: FractionallySizedBox(
+        heightFactor: responsiveScreen.heightFactor,
+        widthFactor: responsiveScreen.widthFactor,
+        child: Container(
+          alignment: Alignment.topCenter,
+          padding: EdgeInsets.only(top: 55),
+          child: Text(
+            "FlowSurvey",
+            style: Theme.of(context).textTheme.headline6.copyWith(
+                  fontSize: responsiveScreen.titleSize,
+                ),
+          ),
+        ),
+      ),
+    );
   }
 
   Widget _content(BuildContext context, ResponsiveScreen responsiveScreen) {
     return Stack(
       children: <Widget>[
-        AnimatedContainer(
+        AnimatedOpacity(
           duration: Duration(milliseconds: 900),
-          padding: EdgeInsets.only(top: _padding),
-          alignment: _alignment,
+          opacity: 1 - _opacity,
           curve: Curves.easeInOut,
-          child: Text(
-            "My Projects",
-            style: Theme.of(context)
-                .textTheme
-                .headline6
-                .copyWith(fontSize: responsiveScreen.titleSize),
+          child: Container(
+            alignment: Alignment.center,
+            child: Text(
+              "My Projects",
+              style: Theme.of(context)
+                  .textTheme
+                  .headline6
+                  .copyWith(fontSize: responsiveScreen.titleSize),
+            ),
           ),
         ),
         Align(
@@ -58,14 +78,29 @@ class _ProjectsState extends State<Projects> {
             duration: Duration(milliseconds: 1550),
             curve: LinearHalfCurve().flipped,
             child: AnimatedSwitcher(
-              duration: Duration(seconds: 1),
+              duration: Duration(milliseconds: 500),
+              reverseDuration: Duration(milliseconds: 500),
               transitionBuilder: (Widget child, Animation<double> animation) =>
-                  RotationTransition(
+                  FadeTransition(
                 child: child,
-                turns: animation,
+                opacity: animation,
               ),
               child: _animatedWidget,
             ),
+          ),
+        ),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: FloatingActionButton(
+            heroTag: "btnBack",
+            onPressed: () => _switchWidget(responsiveScreen),
+          ),
+        ),
+        Align(
+          alignment: Alignment.centerRight,
+          child: FloatingActionButton(
+            heroTag: "btnForward",
+            onPressed: () => _switchWidget(responsiveScreen),
           ),
         ),
       ],
@@ -79,12 +114,20 @@ class _ProjectsState extends State<Projects> {
       child: LayoutBuilder(
         builder: (context, constraint) {
           if (constraint.maxWidth < 840) {
-            responsiveScreen =
-                ResponsiveScreen(titleSize: 30, subTitleSize: 20);
+            responsiveScreen = ResponsiveScreen(
+                titleSize: 30,
+                subTitleSize: 20,
+                widthFactor: 1,
+                heightFactor: 1);
+            this._animatedWidget = _projectSurvey(context, responsiveScreen);
             return this._content(context, responsiveScreen);
           } else {
-            responsiveScreen =
-                ResponsiveScreen(titleSize: 60, subTitleSize: 30);
+            responsiveScreen = ResponsiveScreen(
+                titleSize: 60,
+                subTitleSize: 30,
+                widthFactor: 1,
+                heightFactor: 1);
+            this._animatedWidget = _projectSurvey(context, responsiveScreen);
             return this._content(context, responsiveScreen);
           }
         },
