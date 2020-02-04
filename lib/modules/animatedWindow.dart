@@ -20,6 +20,7 @@ class AnimatedWindow extends StatelessWidget {
               Positioned.fill(
                 child: AnimatedBackground(),
               ),
+              this.child,
               Align(
                 alignment: Alignment.topLeft,
                 child: FlatButton(
@@ -38,7 +39,6 @@ class AnimatedWindow extends StatelessWidget {
                   },
                 ),
               ),
-              this.child,
             ],
           ),
         ),
