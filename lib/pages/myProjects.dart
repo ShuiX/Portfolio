@@ -89,18 +89,48 @@ class _ProjectsState extends State<Projects> {
             ),
           ),
         ),
-        Align(
-          alignment: Alignment.centerLeft,
-          child: FloatingActionButton(
-            heroTag: "btnBack",
-            onPressed: () => _switchWidget(responsiveScreen),
+        AnimatedOpacity(
+          opacity: _opacity,
+          duration: Duration(milliseconds: 1550),
+          child: Container(
+            alignment: Alignment.bottomLeft,
+            padding: EdgeInsets.only(bottom: 15, left: 15),
+            child: FloatingActionButton(
+              child: Stack(
+                children: <Widget>[
+                  Positioned.fill(
+                    child: AnimatedBackground(),
+                  ),
+                  Center(
+                    child: Icon(Icons.arrow_back),
+                  ),
+                ],
+              ),
+              heroTag: "btnBack",
+              onPressed: () => _switchWidget(responsiveScreen),
+            ),
           ),
         ),
-        Align(
-          alignment: Alignment.centerRight,
-          child: FloatingActionButton(
-            heroTag: "btnForward",
-            onPressed: () => _switchWidget(responsiveScreen),
+        AnimatedOpacity(
+          opacity: _opacity,
+          duration: Duration(milliseconds: 1550),
+          child: Container(
+            alignment: Alignment.bottomRight,
+            padding: EdgeInsets.only(bottom: 15, right: 15),
+            child: FloatingActionButton(
+              child: Stack(
+                children: <Widget>[
+                  Positioned.fill(
+                    child: AnimatedBackground(),
+                  ),
+                  Center(
+                    child: Icon(Icons.arrow_forward),
+                  ),
+                ],
+              ),
+              heroTag: "btnForward",
+              onPressed: () => _switchWidget(responsiveScreen),
+            ),
           ),
         ),
       ],
