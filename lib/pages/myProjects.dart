@@ -46,6 +46,8 @@ class _ProjectsState extends State<Projects> {
             "FlowSurvey",
             style: Theme.of(context).textTheme.headline6.copyWith(
                   fontSize: responsiveScreen.titleSize,
+                  fontFamily: "BlackChancery",
+                  color: Colors.white,
                 ),
           ),
         ),
