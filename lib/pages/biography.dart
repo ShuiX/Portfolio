@@ -90,7 +90,7 @@ class _BiographyState extends State<Biography> {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: Image.asset(
-                        'assets/images/fieldphoto.png',
+                        'assets/images/exmp.jpg',
                         height: MediaQuery.of(context).size.height * 0.64,
                         fit: BoxFit.cover,
                       ),
