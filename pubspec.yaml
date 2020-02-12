@@ -79,5 +79,8 @@ flutter:
     - family: BlackChancery
       fonts:
         - asset: assets/fonts/blackchancery.ttf
+    - family: Elven
+      fonts:
+        - asset: assets/fonts/elven.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
