@@ -3,6 +3,8 @@ import 'package:portfolio/modules/LinearHalfCurve.dart';
 import 'package:portfolio/modules/animatedBackground.dart';
 import 'package:portfolio/modules/animatedWindow.dart';
 import 'package:portfolio/modules/responsiveScreen.dart';
+import 'package:portfolio/pages/myProjectRPG.dart';
+import 'package:portfolio/pages/myProjectSurvey.dart';
 
 class Projects extends StatefulWidget {
   @override
@@ -37,46 +39,11 @@ class _ProjectsState extends State<Projects> {
   }
 
   Widget _projectSurvey(BuildContext context) {
-    return new Card(
-      child: FractionallySizedBox(
-        heightFactor: this._responsiveScreen.heightFactor,
-        widthFactor: this._responsiveScreen.widthFactor,
-        child: Container(
-          alignment: Alignment.topCenter,
-          padding: EdgeInsets.only(top: 55),
-          child: Text(
-            "FlowSurvey",
-            style: Theme.of(context).textTheme.headline6.copyWith(
-                  fontSize: this._responsiveScreen.titleSize,
-                  fontFamily: "BlackChancery",
-                  color: Colors.white,
-                ),
-          ),
-        ),
-      ),
-    );
+    return ProjectSurvey();
   }
 
   Widget _projectRPG(BuildContext context) {
-    return new Card(
-      color: Colors.lightBlue,
-      child: FractionallySizedBox(
-        heightFactor: this._responsiveScreen.heightFactor,
-        widthFactor: this._responsiveScreen.widthFactor,
-        child: Container(
-          alignment: Alignment.topCenter,
-          padding: EdgeInsets.only(top: 55),
-          child: Text(
-            "Project Darzana",
-            style: Theme.of(context).textTheme.headline6.copyWith(
-                  fontSize: this._responsiveScreen.titleSize,
-                  fontFamily: "Elven",
-                  color: Colors.black,
-                ),
-          ),
-        ),
-      ),
-    );
+    return ProjectRPG();
   }
 
   Widget _content(BuildContext context) {
