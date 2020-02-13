@@ -82,5 +82,11 @@ flutter:
     - family: Elven
       fonts:
         - asset: assets/fonts/elven.ttf
+    - family: Fantasy
+      fonts:
+        - asset: assets/fonts/fantasy.ttf
+    - family: Terminal
+      fonts:
+        - asset: assets/fonts/terminal.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
