@@ -13,8 +13,9 @@ class Projects extends StatefulWidget {
 
 class _ProjectsState extends State<Projects> {
   double _opacity = 0;
-  Widget _animatedWidget;
+  int _projectIndx = 0;
   ResponsiveScreen _responsiveScreen;
+  List<Widget> _projects = [ProjectSurvey(), ProjectRPG()];
 
   @override
   void initState() {
@@ -25,25 +26,9 @@ class _ProjectsState extends State<Projects> {
   void _timing() async {
     Future.delayed(Duration(milliseconds: 750)).then((_) {
       setState(() {
-        _animatedWidget = _projectSurvey(context);
         this._opacity = 1;
       });
     });
-  }
-
-  void _switchWidget() {
-    print("pressed");
-    setState(() {
-      this._animatedWidget = _projectRPG(context);
-    });
-  }
-
-  Widget _projectSurvey(BuildContext context) {
-    return ProjectSurvey();
-  }
-
-  Widget _projectRPG(BuildContext context) {
-    return ProjectRPG();
   }
 
   Widget _content(BuildContext context) {
@@ -78,7 +63,7 @@ class _ProjectsState extends State<Projects> {
                 child: child,
                 opacity: animation,
               ),
-              child: _animatedWidget,
+              child: _projects[_projectIndx],
             ),
           ),
         ),
@@ -100,7 +85,14 @@ class _ProjectsState extends State<Projects> {
                 ],
               ),
               heroTag: "btnBack",
-              onPressed: () => _switchWidget(),
+              onPressed: () {
+                if(_projectIndx - 1 < 0) {
+                  _projectIndx = _projects.length;
+                }
+                setState(() {
+                  --_projectIndx;
+                });
+              },
             ),
           ),
         ),
@@ -122,7 +114,14 @@ class _ProjectsState extends State<Projects> {
                 ],
               ),
               heroTag: "btnForward",
-              onPressed: () => _switchWidget(),
+              onPressed: () {
+                if (_projectIndx + 1 >= _projects.length) {
+                  _projectIndx = -1;
+                }
+                setState(() {
+                  ++_projectIndx;
+                });
+              },
             ),
           ),
         ),
