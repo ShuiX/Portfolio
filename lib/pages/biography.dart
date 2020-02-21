@@ -11,6 +11,7 @@ class Biography extends StatefulWidget {
 
 class _BiographyState extends State<Biography> {
   Alignment _alignment = Alignment.center;
+  String _photoRoute = 'assets/images/exmp.jpg';
   double _padding = 0;
   double _opacity = 0;
 
@@ -90,7 +91,7 @@ class _BiographyState extends State<Biography> {
                         borderRadius: BorderRadius.circular(30),
                       ),
                       child: Image.asset(
-                        'assets/images/exmp.jpg',
+                        _photoRoute,
                         height: MediaQuery.of(context).size.height * 0.64,
                         fit: BoxFit.cover,
                       ),
@@ -150,7 +151,7 @@ class _BiographyState extends State<Biography> {
                       borderRadius: BorderRadius.circular(25),
                     ),
                     child: Image.asset(
-                      "assets/images/fieldphoto.png",
+                      _photoRoute,
                       height: MediaQuery.of(context).size.height * 0.75,
                       fit: BoxFit.cover,
                     ),
