@@ -6,44 +6,56 @@ class ProjectRPG extends StatelessWidget {
 
   Widget _content(BuildContext context, ResponsiveScreen responsiveScreen) {
     return Card(
-      color: Colors.lightBlue,
-      child: FractionallySizedBox(
-        heightFactor: responsiveScreen.heightFactor,
-        widthFactor: responsiveScreen.widthFactor,
-        child: Container(
-          alignment: Alignment.topCenter,
-          padding: EdgeInsets.only(top: 55),
-          child: RichText(
-            text: TextSpan(
-              children: <TextSpan>[
-                TextSpan(
-                  text: "Project",
-                  style: TextStyle(
-                    fontSize: responsiveScreen.titleSize,
-                    color: Colors.black,
-                    fontFamily: "Terminal",
-                  ),
-                ),
-                TextSpan(
-                  text: "_",
-                  style: TextStyle(
-                    fontSize: responsiveScreen.titleSize,
-                    color: Colors.black,
-                    fontFamily: "Fantasy",
-                  ),
-                ),
-                TextSpan(
-                  text: "Darzana",
-                  style: TextStyle(
-                    fontSize: responsiveScreen.titleSize,
-                    color: Colors.pink,
-                    fontFamily: "Elven",
-                  ),
-                )
-              ],
+      color: Colors.black,
+      child: Stack(
+        children: <Widget>[
+          FractionallySizedBox(
+            heightFactor: 1.0,
+            widthFactor: 1.0,
+            child: Image.asset(
+              "assets/images/projectDarzana.png",
+              fit: BoxFit.cover,
             ),
           ),
-        ),
+          FractionallySizedBox(
+            heightFactor: responsiveScreen.heightFactor,
+            widthFactor: responsiveScreen.widthFactor,
+            child: Container(
+              alignment: Alignment.topCenter,
+              padding: EdgeInsets.only(top: 55),
+              child: RichText(
+                text: TextSpan(
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: "Project",
+                      style: TextStyle(
+                        fontSize: responsiveScreen.titleSize,
+                        color: Colors.white,
+                        fontFamily: "Terminal",
+                      ),
+                    ),
+                    TextSpan(
+                      text: "_",
+                      style: TextStyle(
+                        fontSize: responsiveScreen.titleSize,
+                        color: Colors.black,
+                        fontFamily: "Fantasy",
+                      ),
+                    ),
+                    TextSpan(
+                      text: "Darzana",
+                      style: TextStyle(
+                        fontSize: responsiveScreen.titleSize,
+                        color: Colors.pink,
+                        fontFamily: "Elven",
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
