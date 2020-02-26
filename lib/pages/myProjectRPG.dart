@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/modules/responsiveScreen.dart';
 
+import 'dart:js' as js;
+
 class ProjectRPG extends StatelessWidget {
   ProjectRPG();
 
@@ -125,7 +127,37 @@ class ProjectRPG extends StatelessWidget {
                       ],
                     ),
                   ),
-                )
+                ),
+                Container(
+                  alignment: Alignment.bottomRight,
+                  padding: EdgeInsets.only(bottom: 10, right: 68),
+                  child: FlatButton(
+                    color: Colors.transparent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: Text(
+                      "\*Image Taken From Ingame",
+                      style: TextStyle(
+                        fontSize: responsiveScreen.subTitleSize * 0.7,
+                        color: Colors.pink,
+                        fontFamily: "Fantasy",
+                        shadows: [
+                          Shadow(
+                            color: Colors.pink.withOpacity(1.0),
+                            blurRadius: 5,
+                          ),
+                        ],
+                      ),
+                    ),
+                    onPressed: () => js.context.callMethod(
+                      "open",
+                      [
+                        "https://shuix-portfolio.web.app/assets/assets/images/projectDarzana.png"
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
