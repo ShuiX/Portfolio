@@ -6,7 +6,8 @@ import 'dart:js' as js;
 class ProjectRPG extends StatelessWidget {
   ProjectRPG();
 
-  Widget _content(BuildContext context, ResponsiveScreen responsiveScreen) {
+  Widget _content(BuildContext context, ResponsiveScreen responsiveScreen,
+      double paddingRight, Alignment alignmentForLink) {
     return Card(
       color: Colors.black,
       child: Stack(
@@ -129,8 +130,8 @@ class ProjectRPG extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  alignment: Alignment.bottomRight,
-                  padding: EdgeInsets.only(bottom: 10, right: 68),
+                  alignment: alignmentForLink,
+                  padding: EdgeInsets.only(bottom: 10, right: paddingRight),
                   child: FlatButton(
                     color: Colors.transparent,
                     shape: RoundedRectangleBorder(
@@ -168,17 +169,25 @@ class ProjectRPG extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double _paddingRight;
+    Alignment _alignmentForLink;
     ResponsiveScreen responsiveScreen;
     return LayoutBuilder(
       builder: (context, constraint) {
         if (constraint.maxWidth < 840) {
           responsiveScreen = ResponsiveScreen(
               titleSize: 30, subTitleSize: 20, widthFactor: 1, heightFactor: 1);
-          return this._content(context, responsiveScreen);
+          _paddingRight = 0;
+          _alignmentForLink = Alignment.bottomCenter;
+          return this._content(
+              context, responsiveScreen, _paddingRight, _alignmentForLink);
         } else {
           responsiveScreen = ResponsiveScreen(
               titleSize: 60, subTitleSize: 30, widthFactor: 1, heightFactor: 1);
-          return this._content(context, responsiveScreen);
+          _paddingRight = 68;
+          _alignmentForLink = Alignment.bottomRight;
+          return this._content(
+              context, responsiveScreen, _paddingRight, _alignmentForLink);
         }
       },
     );

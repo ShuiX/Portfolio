@@ -9,17 +9,21 @@ class ProjectSurvey extends StatelessWidget {
       child: FractionallySizedBox(
         heightFactor: responsiveScreen.heightFactor,
         widthFactor: responsiveScreen.widthFactor,
-        child: Container(
-          alignment: Alignment.topCenter,
-          padding: EdgeInsets.only(top: 55),
-          child: Text(
-            "FlowSurvey",
-            style: Theme.of(context).textTheme.headline6.copyWith(
-                  fontSize: responsiveScreen.titleSize,
-                  fontFamily: "BlackChancery",
-                  color: Colors.white,
-                ),
-          ),
+        child: Stack(
+          children: <Widget>[
+            Container(
+              alignment: Alignment.topCenter,
+              padding: EdgeInsets.only(top: 55),
+              child: Text(
+                "FlowSurvey",
+                style: Theme.of(context).textTheme.headline6.copyWith(
+                      fontSize: responsiveScreen.titleSize,
+                      fontFamily: "BlackChancery",
+                      color: Colors.white,
+                    ),
+              ),
+            ),
+          ],
         ),
       ),
     );
