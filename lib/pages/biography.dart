@@ -85,41 +85,53 @@ class _BiographyState extends State<Biography> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Expanded(
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: Image.asset(
-                        _photoRoute,
-                        height: MediaQuery.of(context).size.height * 0.64,
-                        fit: BoxFit.cover,
-                      ),
+                  Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: Image.asset(
+                      _photoRoute,
+                      height: MediaQuery.of(context).size.height * 0.64,
+                      fit: BoxFit.cover,
                     ),
                   ),
                   Expanded(
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      child: _bioList(context, responsiveScreen),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(
-                        ContentData.contentText[0],
-                        style: Theme.of(context).textTheme.bodyText1,
+                    child: Center(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        child: RichText(
+                          text: TextSpan(
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: " Shajith Shantharuban \n",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline6
+                                    .copyWith(
+                                  fontSize: responsiveScreen.subTitleSize,
+                                  fontWeight: FontWeight.bold,
+                                  shadows: [
+                                    Shadow(
+                                      color: Color.fromRGBO(100, 255, 218, 1),
+                                      blurRadius: 10,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              TextSpan(
+                                text: "   bspsjnglkjadkfj",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText1
+                                    .copyWith(
+                                        fontFamily: "Terminal", fontSize: 25),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(
-                        ContentData.contentText[1],
-                        style: Theme.of(context).textTheme.bodyText1,
-                      ),
-                    ),
+                    flex: 2,
                   ),
                 ],
               ),
@@ -210,7 +222,7 @@ class _BiographyState extends State<Biography> {
             return this._mobileView(context, responsiveScreen);
           } else {
             responsiveScreen = ResponsiveScreen(
-                titleSize: 60, subTitleSize: 30, headlineSize: 20);
+                titleSize: 60, subTitleSize: 35, headlineSize: 20);
             return this._desktopView(context, responsiveScreen);
           }
         },
