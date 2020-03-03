@@ -14,7 +14,7 @@ class _BiographyState extends State<Biography> {
   double _padding = 0;
   double _opacity = 0;
   String _name = " Shajith Shantharuban \n";
-  String _content = "   bspsjnglkjadkfj";
+  String _content = "   Programming enthusiast with passion for development and new possibilities.\n   This is just some Tet";
 
   @override
   void initState() {
