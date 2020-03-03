@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/modules/LinearHalfCurve.dart';
 import 'package:portfolio/modules/animatedWindow.dart';
-import 'package:portfolio/modules/contentData.dart';
 import 'package:portfolio/modules/responsiveScreen.dart';
 
 class Biography extends StatefulWidget {
@@ -14,6 +13,8 @@ class _BiographyState extends State<Biography> {
   String _photoRoute = 'assets/images/exmp.jpg';
   double _padding = 0;
   double _opacity = 0;
+  String _name = " Shajith Shantharuban \n";
+  String _content = "   bspsjnglkjadkfj";
 
   @override
   void initState() {
@@ -44,28 +45,6 @@ class _BiographyState extends State<Biography> {
             .headline6
             .copyWith(fontSize: responsiveScreen.titleSize),
       ),
-    );
-  }
-
-  Widget _bioList(BuildContext context, ResponsiveScreen responsiveScreen) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: ContentData.bioListText
-          .map((item) => new ListTile(
-                title: Text(
-                  item,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline6
-                      .copyWith(fontSize: responsiveScreen.headlineSize),
-                ),
-                leading: Icon(
-                  Icons.fiber_manual_record,
-                  size: 20,
-                ),
-              ))
-          .toList(),
     );
   }
 
@@ -103,7 +82,7 @@ class _BiographyState extends State<Biography> {
                           text: TextSpan(
                             children: <TextSpan>[
                               TextSpan(
-                                text: " Shajith Shantharuban \n",
+                                text: _name,
                                 style: Theme.of(context)
                                     .textTheme
                                     .headline6
@@ -119,7 +98,7 @@ class _BiographyState extends State<Biography> {
                                 ),
                               ),
                               TextSpan(
-                                text: "   bspsjnglkjadkfj",
+                                text: _content,
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyText1
@@ -148,7 +127,7 @@ class _BiographyState extends State<Biography> {
         _title(context, responsiveScreen),
         Container(
           alignment: Alignment.topCenter,
-          padding: EdgeInsets.only(top: 100, right: 20, left: 20),
+          padding: EdgeInsets.only(top: 100, right: 20, left: 20, bottom: 20),
           child: SingleChildScrollView(
             child: AnimatedOpacity(
               duration: Duration(milliseconds: 1550),
@@ -172,33 +151,30 @@ class _BiographyState extends State<Biography> {
                     color: Color.fromRGBO(100, 255, 218, 1),
                     thickness: 1,
                   ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    alignment: Alignment.center,
-                    child: _bioList(context, responsiveScreen),
-                  ),
-                  Divider(
-                    color: Color.fromRGBO(100, 255, 218, 1),
-                    thickness: 1,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Text(
-                      ContentData.contentText[0],
-                      style: Theme.of(context).textTheme.bodyText1,
-                    ),
-                  ),
-                  Divider(
-                    color: Color.fromRGBO(100, 255, 218, 1),
-                    thickness: 1,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Text(
-                      ContentData.contentText[1],
-                      style: Theme.of(context).textTheme.bodyText1,
+                  RichText(
+                    text: TextSpan(
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: _name,
+                          style: Theme.of(context).textTheme.headline6.copyWith(
+                            fontSize: responsiveScreen.subTitleSize,
+                            fontWeight: FontWeight.bold,
+                            shadows: [
+                              Shadow(
+                                color: Color.fromRGBO(100, 255, 218, 1),
+                                blurRadius: 10,
+                              ),
+                            ],
+                          ),
+                        ),
+                        TextSpan(
+                          text: _content,
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyText1
+                              .copyWith(fontFamily: "Terminal"),
+                        ),
+                      ],
                     ),
                   ),
                 ],
