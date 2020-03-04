@@ -14,7 +14,7 @@ class _BiographyState extends State<Biography> {
   double _padding = 0;
   double _opacity = 0;
   String _name = " Shajith Shantharuban \n";
-  String _content = "   Programming enthusiast with passion for development and new possibilities.\n   This is just some Tet";
+  String _content = "Programming enthusiast with passion for development and new possibilities. A authentic application represents the authenticity of the developer of the application alot. In other words, my work talks the talk and walks the walk. My aim for unique experience and interest of the user is a trait of mine, which effects my work alot. \"Quality over quantity\", that is my motto.";
 
   @override
   void initState() {
@@ -77,7 +77,7 @@ class _BiographyState extends State<Biography> {
                   Expanded(
                     child: Center(
                       child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        padding: EdgeInsets.symmetric(horizontal: 100),
                         child: RichText(
                           text: TextSpan(
                             children: <TextSpan>[
@@ -172,7 +172,7 @@ class _BiographyState extends State<Biography> {
                           style: Theme.of(context)
                               .textTheme
                               .bodyText1
-                              .copyWith(fontFamily: "Terminal"),
+                              .copyWith(fontFamily: "Terminal", fontSize: responsiveScreen.subTitleSize * 0.9),
                         ),
                       ],
                     ),
