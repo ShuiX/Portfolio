@@ -31,32 +31,17 @@ class _ActivitiesState extends State<Activities> {
     });
   }
 
-  Widget _selection() {
-    return AnimatedOpacity(
-      opacity: _opacity,
-      duration: Duration(milliseconds: 1550),
-      curve: LinearHalfCurve().flipped,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          IconButton(
-            icon: Icon(Icons.videogame_asset),
-            iconSize: _iconSize,
-            onPressed: null,
-          ),
-          IconButton(
-            icon: Icon(Icons.music_note),
-            iconSize: _iconSize,
-            onPressed: null,
-          ),
-          IconButton(
-            icon: Icon(Icons.ondemand_video),
-            iconSize: _iconSize,
-            onPressed: null,
-          ),
-        ],
-      ),
-    );
+  dynamic _changeWidget(String widgetName) {
+    setState(() {
+      this._opacity = 0;
+      switch (widgetName) {
+        case "games":
+          this._currentWidget = GamingActivity();
+          break;
+        default:
+          break;
+      }
+    });
   }
 
   Widget _content(BuildContext context, ResponsiveScreen responsiveScreen) {
@@ -77,9 +62,45 @@ class _ActivitiesState extends State<Activities> {
         ),
         Align(
           alignment: Alignment.center,
+          child: AnimatedOpacity(
+            opacity: _opacity,
+            duration: Duration(milliseconds: 1550),
+            curve: LinearHalfCurve().flipped,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.videogame_asset),
+                  iconSize: _iconSize,
+                  tooltip: "Gaming",
+                  onPressed: () => _changeWidget("games"),
+                ),
+                IconButton(
+                  icon: Icon(Icons.music_note),
+                  iconSize: _iconSize,
+                  tooltip: "Music",
+                  onPressed: () => _changeWidget("music"),
+                ),
+                IconButton(
+                  icon: Icon(Icons.ondemand_video),
+                  iconSize: _iconSize,
+                  tooltip: "Video Editing",
+                  onPressed: () => _changeWidget("editing"),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Align(
+          alignment: Alignment.center,
           child: AnimatedSwitcher(
             duration: Duration(milliseconds: 500),
             reverseDuration: Duration(milliseconds: 500),
+            transitionBuilder: (Widget child, Animation<double> animation) =>
+                ScaleTransition(
+              scale: animation,
+              child: child,
+            ),
             child: _currentWidget,
           ),
         ),
@@ -113,5 +134,14 @@ class _ActivitiesState extends State<Activities> {
         },
       ),
     );
+  }
+}
+
+class GamingActivity extends StatelessWidget {
+  GamingActivity();
+
+  @override
+  Widget build(BuildContext context) {
+    return Text("Gamer");
   }
 }
