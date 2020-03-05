@@ -147,7 +147,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
                   return Column(
                     children: <Widget>[
                       _itemButton(
-                          context, 0.6, "Bio", Icons.person, "/biography"),
+                          context, 0.6, "About", Icons.person, "/biography"),
                       Container(height: 20),
                       _itemButton(
                           context, 0.6, "Projects", Icons.work, "/projects"),
@@ -166,7 +166,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           this._itemButton(
-                              context, 0.2, "Bio", Icons.person, "/biography"),
+                              context, 0.2, "About", Icons.person, "/biography"),
                           Container(width: 20),
                           this._itemButton(context, 0.2, "Projects", Icons.work,
                               "/projects"),

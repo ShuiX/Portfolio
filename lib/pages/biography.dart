@@ -39,7 +39,7 @@ class _BiographyState extends State<Biography> {
       alignment: _alignment,
       curve: Curves.easeInOut,
       child: Text(
-        "Biography",
+        "About",
         style: Theme.of(context)
             .textTheme
             .headline6
