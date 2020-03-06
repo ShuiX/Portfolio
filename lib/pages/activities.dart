@@ -12,7 +12,9 @@ class _ActivitiesState extends State<Activities> {
   Alignment _alignment = Alignment.center;
   double _padding = 0;
   double _opacity = 0;
+  double _backOpacity = 0;
   double _iconSize = 30;
+  Curve _curve = LinearHalfCurve().flipped;
   Widget _currentWidget;
 
   @override
@@ -33,14 +35,30 @@ class _ActivitiesState extends State<Activities> {
 
   dynamic _changeWidget(String widgetName) {
     setState(() {
+      this._backOpacity = 1;
+      this._curve = Curves.easeInOut;
       this._opacity = 0;
       switch (widgetName) {
         case "games":
           this._currentWidget = GamingActivity();
           break;
+        case "music":
+          this._currentWidget = GamingActivity();
+          break;
+        case "editing":
+          this._currentWidget = GamingActivity();
+          break;
         default:
           break;
       }
+    });
+  }
+
+  dynamic _goBack() {
+    setState(() {
+      this._backOpacity = 0;
+      this._currentWidget = null;
+      this._opacity = 1;
     });
   }
 
@@ -65,7 +83,7 @@ class _ActivitiesState extends State<Activities> {
           child: AnimatedOpacity(
             opacity: _opacity,
             duration: Duration(milliseconds: 1550),
-            curve: LinearHalfCurve().flipped,
+            curve: _curve,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -94,14 +112,26 @@ class _ActivitiesState extends State<Activities> {
         Align(
           alignment: Alignment.center,
           child: AnimatedSwitcher(
-            duration: Duration(milliseconds: 500),
-            reverseDuration: Duration(milliseconds: 500),
+            duration: Duration(milliseconds: 2000),
+            reverseDuration: Duration(milliseconds: 250),
+            switchInCurve: LinearHalfCurve().flipped,
             transitionBuilder: (Widget child, Animation<double> animation) =>
                 ScaleTransition(
               scale: animation,
               child: child,
             ),
             child: _currentWidget,
+          ),
+        ),
+        AnimatedOpacity(
+          opacity: _backOpacity,
+          duration: Duration(milliseconds: 1250),
+          child: Container(
+            alignment: Alignment.bottomLeft,
+            child: IconButton(
+              icon: Icon(Icons.arrow_back),
+              onPressed: () => _goBack(),
+            ),
           ),
         ),
       ],
@@ -143,5 +173,23 @@ class GamingActivity extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text("Gamer");
+  }
+}
+
+class EditingActivity extends StatelessWidget {
+  EditingActivity();
+
+  @override
+  Widget build(BuildContext context) {
+    return Text("Editing");
+  }
+}
+
+class MusicActivity extends StatelessWidget {
+  MusicActivity();
+
+  @override
+  Widget build(BuildContext context) {
+    return Text("Musician");
   }
 }
