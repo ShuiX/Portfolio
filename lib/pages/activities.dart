@@ -14,6 +14,7 @@ class _ActivitiesState extends State<Activities> {
   double _opacity = 0;
   double _backOpacity = 0;
   double _iconSize = 30;
+  bool _inPageState = false;
   Curve _curve = LinearHalfCurve().flipped;
   Widget _currentWidget;
 
@@ -34,7 +35,9 @@ class _ActivitiesState extends State<Activities> {
   }
 
   dynamic _changeWidget(String widgetName) {
-    setState(() {
+    if (_inPageState != true) {
+      setState(() {
+      this._inPageState = true;
       this._backOpacity = 1;
       this._curve = Curves.easeInOut;
       this._opacity = 0;
@@ -43,19 +46,23 @@ class _ActivitiesState extends State<Activities> {
           this._currentWidget = GamingActivity();
           break;
         case "music":
-          this._currentWidget = GamingActivity();
+          this._currentWidget = MusicActivity();
           break;
         case "editing":
-          this._currentWidget = GamingActivity();
+          this._currentWidget = EditingActivity();
           break;
         default:
           break;
       }
     });
+    } else {
+      return null;
+    }
   }
 
   dynamic _goBack() {
     setState(() {
+      this._inPageState = false;
       this._curve = LinearHalfCurve().flipped;
       this._backOpacity = 0;
       this._currentWidget = null;
