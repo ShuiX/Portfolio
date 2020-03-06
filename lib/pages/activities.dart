@@ -56,6 +56,7 @@ class _ActivitiesState extends State<Activities> {
 
   dynamic _goBack() {
     setState(() {
+      this._curve = LinearHalfCurve().flipped;
       this._backOpacity = 0;
       this._currentWidget = null;
       this._opacity = 1;
@@ -113,7 +114,7 @@ class _ActivitiesState extends State<Activities> {
           alignment: Alignment.center,
           child: AnimatedSwitcher(
             duration: Duration(milliseconds: 2000),
-            reverseDuration: Duration(milliseconds: 250),
+            reverseDuration: Duration(milliseconds: 750),
             switchInCurve: LinearHalfCurve().flipped,
             transitionBuilder: (Widget child, Animation<double> animation) =>
                 ScaleTransition(
