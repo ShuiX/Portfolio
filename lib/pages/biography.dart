@@ -10,7 +10,7 @@ class Biography extends StatefulWidget {
 
 class _BiographyState extends State<Biography> {
   Alignment _alignment = Alignment.center;
-  String _photoRoute = 'assets/images/exmp.jpg';
+  String _photoRoute = 'assets/images/_DSC4535.jpg';
   double _padding = 0;
   double _opacity = 0;
   String _name = " Shajith Shantharuban \n";
