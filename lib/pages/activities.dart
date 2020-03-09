@@ -37,24 +37,24 @@ class _ActivitiesState extends State<Activities> {
   dynamic _changeWidget(String widgetName) {
     if (_inPageState != true) {
       setState(() {
-      this._inPageState = true;
-      this._backOpacity = 1;
-      this._curve = Curves.easeInOut;
-      this._opacity = 0;
-      switch (widgetName) {
-        case "games":
-          this._currentWidget = GamingActivity();
-          break;
-        case "music":
-          this._currentWidget = MusicActivity();
-          break;
-        case "editing":
-          this._currentWidget = EditingActivity();
-          break;
-        default:
-          break;
-      }
-    });
+        this._inPageState = true;
+        this._backOpacity = 1;
+        this._curve = Curves.easeInOut;
+        this._opacity = 0;
+        switch (widgetName) {
+          case "games":
+            this._currentWidget = GamingActivity();
+            break;
+          case "music":
+            this._currentWidget = MusicActivity();
+            break;
+          case "editing":
+            this._currentWidget = EditingActivity();
+            break;
+          default:
+            break;
+        }
+      });
     } else {
       return null;
     }
@@ -117,19 +117,16 @@ class _ActivitiesState extends State<Activities> {
             ),
           ),
         ),
-        Align(
-          alignment: Alignment.center,
-          child: AnimatedSwitcher(
-            duration: Duration(milliseconds: 2000),
-            reverseDuration: Duration(milliseconds: 750),
-            switchInCurve: LinearHalfCurve().flipped,
-            transitionBuilder: (Widget child, Animation<double> animation) =>
-                ScaleTransition(
-              scale: animation,
-              child: child,
-            ),
-            child: _currentWidget,
+        AnimatedSwitcher(
+          duration: Duration(milliseconds: 2000),
+          reverseDuration: Duration(milliseconds: 750),
+          switchInCurve: LinearHalfCurve().flipped,
+          transitionBuilder: (Widget child, Animation<double> animation) =>
+              ScaleTransition(
+            scale: animation,
+            child: child,
           ),
+          child: _currentWidget,
         ),
         AnimatedOpacity(
           opacity: _backOpacity,
@@ -180,7 +177,39 @@ class GamingActivity extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("Gamer");
+    return Stack(
+      children: <Widget>[
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          alignment: Alignment.center,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(11),
+            child: LayoutBuilder(
+              builder: (context, constraint) {
+                if (constraint.maxWidth < 720) {
+                  return Image.asset(
+                    "assets/images/gaming.png",
+                    fit: BoxFit.cover,
+                    height: MediaQuery.of(context).size.height,
+                  );
+                } else {
+                  return Image.asset(
+                    "assets/images/gaming.png",
+                    fit: BoxFit.fill,
+                    height: MediaQuery.of(context).size.height,
+                  );
+                }
+              },
+            ),
+          ),
+        ),
+        Container(
+          alignment: Alignment.centerRight,
+          child: Text("Hello"),
+        ),
+      ],
+    );
   }
 }
 
