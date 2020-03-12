@@ -206,7 +206,26 @@ class GamingActivity extends StatelessWidget {
         ),
         Container(
           alignment: Alignment.centerRight,
-          child: Text("Hello"),
+          padding: EdgeInsets.symmetric(horizontal: 50),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.black.withOpacity(0.5),
+          ),
+          child: Text(
+            "As someone who grew up with the internet culture, i was also driven into the gaming topic when it was gaining more popularity on the web. At last it became one of my hobbies.\n-Competetive Achievements: Elite Player in Super Smash Bros Ultimate / Ranked Diamond in Overwatch / Doing Speedruns, Challenges (mostly in Kingdom Hearts games)\n-Overwatch?: Overwatch is a First Person Shooter that needs strong muscle memories and abstract thinking with your team of 6 people. What makes this game so good is that it is complex. There is no brainless shooting or else its gonna cost the game\n-Super Smash Bros Ultimte?: It's brawl a game which includes alot of iconic videogame-characters as playable characters. This game requires alot of foreshadowing of your enemies movements. Observing, reacting and thinking is required to win against your enemy.\n-Speedrun / Challenges?: Speedruns and Challenges are mostly on singleplayer platform games. They require alot of precision, memory muscles and most importantly patience. ",
+            textAlign: TextAlign.right,
+            style: Theme.of(context).textTheme.subtitle1.copyWith(
+              fontSize: 30,
+              color: Colors.white,
+              fontFamily: "Terminal",
+              shadows: [
+                Shadow(
+                  color: Colors.white,
+                  blurRadius: 5,
+                )
+              ],
+            ),
+          ),
         ),
       ],
     );
