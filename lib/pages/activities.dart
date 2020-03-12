@@ -175,6 +175,9 @@ class _ActivitiesState extends State<Activities> {
 class GamingActivity extends StatelessWidget {
   GamingActivity();
 
+  final String _contentText =
+      "As someone who grew up with the internet culture, i was also driven into the gaming topic when it was gaining more popularity on the web. At last it became one of my hobbies.\n\n-Competetive Achievements: Elite Player in Super Smash Bros Ultimate / Ranked Diamond in Overwatch / Doing Speedruns, Challenges (mostly in Kingdom Hearts games)\n\n-Overwatch?: Overwatch is a First Person Shooter that needs strong muscle memories and abstract thinking with your team of 6 people. What makes this game so good is that it is complex. There is no brainless shooting or else its gonna cost the game\n\n-Super Smash Bros Ultimte?: It's brawl a game which includes alot of iconic videogame-characters as playable characters. This game requires alot of foreshadowing of your enemies movements. Observing, reacting and thinking is required to win against your enemy.\n\n-Speedrun / Challenges?: Speedruns and Challenges are mostly on singleplayer platform games. They require alot of precision, memory muscles and most importantly patience.";
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -206,25 +209,51 @@ class GamingActivity extends StatelessWidget {
         ),
         Container(
           alignment: Alignment.centerRight,
-          padding: EdgeInsets.symmetric(horizontal: 50),
+          padding: EdgeInsets.symmetric(horizontal: 40),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: Colors.black.withOpacity(0.5),
           ),
-          child: Text(
-            "As someone who grew up with the internet culture, i was also driven into the gaming topic when it was gaining more popularity on the web. At last it became one of my hobbies.\n-Competetive Achievements: Elite Player in Super Smash Bros Ultimate / Ranked Diamond in Overwatch / Doing Speedruns, Challenges (mostly in Kingdom Hearts games)\n-Overwatch?: Overwatch is a First Person Shooter that needs strong muscle memories and abstract thinking with your team of 6 people. What makes this game so good is that it is complex. There is no brainless shooting or else its gonna cost the game\n-Super Smash Bros Ultimte?: It's brawl a game which includes alot of iconic videogame-characters as playable characters. This game requires alot of foreshadowing of your enemies movements. Observing, reacting and thinking is required to win against your enemy.\n-Speedrun / Challenges?: Speedruns and Challenges are mostly on singleplayer platform games. They require alot of precision, memory muscles and most importantly patience. ",
-            textAlign: TextAlign.right,
-            style: Theme.of(context).textTheme.subtitle1.copyWith(
-              fontSize: 30,
-              color: Colors.white,
-              fontFamily: "Terminal",
-              shadows: [
-                Shadow(
-                  color: Colors.white,
-                  blurRadius: 5,
-                )
-              ],
-            ),
+          child: LayoutBuilder(
+            builder: (context, constraint) {
+              if (constraint.maxWidth < 720) {
+                return SingleChildScrollView(
+                  child: Container(
+                    child: Text(
+                      "\n\n\n" + _contentText,
+                      textAlign: TextAlign.right,
+                      style: Theme.of(context).textTheme.subtitle1.copyWith(
+                        fontSize: 20,
+                        color: Color.fromRGBO(100, 255, 218, 1),
+                        fontFamily: "Terminal",
+                        shadows: [
+                          Shadow(
+                            color: Color.fromRGBO(100, 255, 218, 1),
+                            blurRadius: 5,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              } else {
+                return Text(
+                  _contentText,
+                  textAlign: TextAlign.right,
+                  style: Theme.of(context).textTheme.subtitle1.copyWith(
+                    fontSize: 25,
+                    color: Color.fromRGBO(100, 255, 218, 1),
+                    fontFamily: "Terminal",
+                    shadows: [
+                      Shadow(
+                        color: Color.fromRGBO(100, 255, 218, 1),
+                        blurRadius: 5,
+                      )
+                    ],
+                  ),
+                );
+              }
+            },
           ),
         ),
       ],
