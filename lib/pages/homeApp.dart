@@ -50,7 +50,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
             Container(
               alignment: Alignment.center,
               child: Text(
-                "// Press anywhere to initialize",
+                "// Click on screen to initialize",
                 style: Theme.of(context).textTheme.subtitle1.copyWith(
                       fontSize: this._responsiveScreen.subTitleSize,
                     ),

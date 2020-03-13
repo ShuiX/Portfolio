@@ -306,7 +306,7 @@ class ProjectRPG extends StatelessWidget {
                     onPressed: () => js.context.callMethod(
                       "open",
                       [
-                        "https://shuix-portfolio.web.app/assets/assets/images/projectDarzana.png"
+                        "https://shajith-portfolio.web.app/assets/assets/images/projectDarzana.png"
                       ],
                     ),
                   ),
