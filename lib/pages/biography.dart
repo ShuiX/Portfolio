@@ -14,7 +14,7 @@ class _BiographyState extends State<Biography> {
   double _padding = 0;
   double _opacity = 0;
   String _name = " Shajith Shantharuban \n";
-  String _content = "Programming enthusiast with passion for development and new possibilities. A authentic application represents the authenticity of the developer of the application alot. In other words, my work talks the talk and walks the walk. My aim for unique experience and interest of the user is a trait of mine, which effects my work alot. \"Quality over quantity\", that is my motto.";
+  String _content = "Programming enthusiast with passion for development and new possibilities. A authentic application represents the personality of the developer. In other words, my work talks the talk and walks the walk. My aim for unique experience and interest of the user is a trait of mine, which effects my work alot. \"Quality over quantity\", that is my motto.";
 
   @override
   void initState() {
