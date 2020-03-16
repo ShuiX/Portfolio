@@ -174,7 +174,8 @@ class _ActivitiesState extends State<Activities> {
 
 class GamingActivity extends StatelessWidget {
   GamingActivity();
-
+  
+  final String _picPath = "assets/images/gaming.png";
   final String _contentText =
       "As someone who grew up with the internet culture, i was also driven into the gaming topic when it was gaining more popularity on the web. At last it became one of my hobbies.\n\n-Competetive Achievements: Elite Player in Super Smash Bros Ultimate / Ranked Diamond in Overwatch / Doing Speedruns, Challenges (mostly in Kingdom Hearts games)\n\n-Overwatch?: Overwatch is a First Person Shooter that needs strong muscle memories and abstract thinking with your team of 6 people. What makes this game so good is that it is complex. There is no brainless shooting or else its gonna cost the game\n\n-Super Smash Bros Ultimte?: It's brawl a game which includes alot of iconic videogame-characters as playable characters. This game requires alot of foreshadowing of your enemies movements. Observing, reacting and thinking is required to win against your enemy.\n\n-Speedrun / Challenges?: Speedruns and Challenges are mostly on singleplayer platform games. They require alot of precision, memory muscles and most importantly patience.";
 
@@ -192,13 +193,13 @@ class GamingActivity extends StatelessWidget {
               builder: (context, constraint) {
                 if (constraint.maxWidth < 720) {
                   return Image.asset(
-                    "assets/images/gaming.png",
+                    _picPath,
                     fit: BoxFit.cover,
                     height: MediaQuery.of(context).size.height,
                   );
                 } else {
                   return Image.asset(
-                    "assets/images/gaming.png",
+                    _picPath,
                     fit: BoxFit.fill,
                     height: MediaQuery.of(context).size.height,
                   );
@@ -264,9 +265,89 @@ class GamingActivity extends StatelessWidget {
 class EditingActivity extends StatelessWidget {
   EditingActivity();
 
+  final String _picPath = "assets/images/editing.png";
+  final String _contentText = "I like to watch alot of movies, animes and youtube videos which brought me into editing later.";
+
   @override
   Widget build(BuildContext context) {
-    return Text("Editing");
+    return Stack(
+      children: <Widget>[
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          alignment: Alignment.center,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(11),
+            child: LayoutBuilder(
+              builder: (context, constraint) {
+                if (constraint.maxWidth < 720) {
+                  return Image.asset(
+                    _picPath,
+                    fit: BoxFit.cover,
+                    height: MediaQuery.of(context).size.height,
+                  );
+                } else {
+                  return Image.asset(
+                    _picPath,
+                    fit: BoxFit.fill,
+                    height: MediaQuery.of(context).size.height,
+                  );
+                }
+              },
+            ),
+          ),
+        ),
+        Container(
+          alignment: Alignment.centerLeft,
+          padding: EdgeInsets.only(left: 40, right: 20),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: Colors.black.withOpacity(0.5),
+          ),
+          child: LayoutBuilder(
+            builder: (context, constraint) {
+              if (constraint.maxWidth < 720) {
+                return SingleChildScrollView(
+                  child: Container(
+                    child: Text(
+                      "\n\n\n" + _contentText,
+                      textAlign: TextAlign.left,
+                      style: Theme.of(context).textTheme.subtitle1.copyWith(
+                        fontSize: 20,
+                        color: Color.fromRGBO(100, 255, 218, 1),
+                        fontFamily: "Terminal",
+                        shadows: [
+                          Shadow(
+                            color: Color.fromRGBO(100, 255, 218, 1),
+                            blurRadius: 5,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              } else {
+                return Text(
+                  _contentText,
+                  textAlign: TextAlign.left,
+                  style: Theme.of(context).textTheme.subtitle1.copyWith(
+                    fontSize: 25,
+                    color: Color.fromRGBO(100, 255, 218, 1),
+                    fontFamily: "Terminal",
+                    shadows: [
+                      Shadow(
+                        color: Color.fromRGBO(100, 255, 218, 1),
+                        blurRadius: 5,
+                      )
+                    ],
+                  ),
+                );
+              }
+            },
+          ),
+        ),
+      ],
+    );
   }
 }
 
