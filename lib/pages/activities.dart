@@ -265,7 +265,7 @@ class GamingActivity extends StatelessWidget {
 class EditingActivity extends StatelessWidget {
   EditingActivity();
 
-  final String _picPath = "assets/images/editing.png";
+  final String _picPath = "assets/images/edit.png";
   final String _contentText = "I like to watch alot of movies, animes and youtube videos which brought me into editing later. My goal behind my content is to entertain the viewer behind the screen, so i usually put alot of efforts into my videos (adding transitions, effects and clipping).\n\n\nThese are the tools i use for editing:\n\n- Sony Vegas and Adobe Premier for video-editing\n\n- Adobe Photoshop and 3D Paint for image-editing";
 
   @override
