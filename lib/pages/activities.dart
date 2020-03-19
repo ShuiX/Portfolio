@@ -266,7 +266,7 @@ class EditingActivity extends StatelessWidget {
   EditingActivity();
 
   final String _picPath = "assets/images/editing.png";
-  final String _contentText = "I like to watch alot of movies, animes and youtube videos which brought me into editing later.";
+  final String _contentText = "I like to watch alot of movies, animes and youtube videos which brought me into editing later. My goal behind my content is to entertain the viewer behind the screen, so i usually put alot of efforts into my videos (adding transitions, effects and clipping).\n\n\nThese are the tools i use for editing:\n\n- Sony Vegas and Adobe Premier for video-editing\n\n- Adobe Photoshop and 3D Paint for image-editing";
 
   @override
   Widget build(BuildContext context) {
@@ -331,7 +331,7 @@ class EditingActivity extends StatelessWidget {
                   _contentText,
                   textAlign: TextAlign.left,
                   style: Theme.of(context).textTheme.subtitle1.copyWith(
-                    fontSize: 25,
+                    fontSize: 30,
                     color: Color.fromRGBO(100, 255, 218, 1),
                     fontFamily: "Terminal",
                     shadows: [
