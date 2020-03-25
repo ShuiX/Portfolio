@@ -4,6 +4,7 @@ import 'package:portfolio/modules/animatedBackground.dart';
 import 'package:portfolio/modules/animatedWindow.dart';
 import 'package:portfolio/modules/responsiveScreen.dart';
 
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:js' as js;
 
 class Projects extends StatefulWidget {

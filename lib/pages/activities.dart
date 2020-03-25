@@ -1,7 +1,10 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:portfolio/modules/LinearHalfCurve.dart';
 import 'package:portfolio/modules/animatedWindow.dart';
 import 'package:portfolio/modules/responsiveScreen.dart';
+import 'dart:ui' as ui;
 
 class Activities extends StatefulWidget {
   @override
@@ -17,10 +20,30 @@ class _ActivitiesState extends State<Activities> {
   bool _inPageState = false;
   Curve _curve = LinearHalfCurve().flipped;
   Widget _currentWidget;
+  Widget _iframeWidget;
+
+  final IFrameElement _iframeElement = IFrameElement();
 
   @override
   void initState() {
     super.initState();
+    _iframeElement.height = '300';
+    _iframeElement.width = '300';
+
+    _iframeElement.src = 'https://www.youtube.com/embed/RQzhAQlg2JQ';
+    _iframeElement.style.border = 'none';
+    _iframeElement.allow = "encrypted-media";
+
+    // ignore: undefined_prefixed_name
+    ui.platformViewRegistry.registerViewFactory(
+      'iframeElement',
+      (int viewId) => _iframeElement,
+    );
+
+    _iframeWidget = HtmlElementView(
+      key: UniqueKey(),
+      viewType: 'iframeElement',
+    );
     _timing();
   }
 
@@ -113,6 +136,11 @@ class _ActivitiesState extends State<Activities> {
                   tooltip: "Video Editing",
                   onPressed: () => _changeWidget("editing"),
                 ),
+                Container(
+                  height: 300,
+                  width: 300,
+                  child: _iframeWidget,
+                )
               ],
             ),
           ),
@@ -174,7 +202,7 @@ class _ActivitiesState extends State<Activities> {
 
 class GamingActivity extends StatelessWidget {
   GamingActivity();
-  
+
   final String _picPath = "assets/images/gaming.png";
   final String _contentText =
       "As someone who grew up with the internet culture, i was also driven into the gaming topic when it was gaining more popularity on the web. At last it became one of my hobbies.\n\n-Competetive Achievements: Elite Player in Super Smash Bros Ultimate / Ranked Diamond in Overwatch / Doing Speedruns, Challenges (mostly in Kingdom Hearts games)\n\n-Overwatch?: Overwatch is a First Person Shooter that needs strong muscle memories and abstract thinking with your team of 6 people. What makes this game so good is that it is complex. There is no brainless shooting or else its gonna cost the game\n\n-Super Smash Bros Ultimte?: It's brawl a game which includes alot of iconic videogame-characters as playable characters. This game requires alot of foreshadowing of your enemies movements. Observing, reacting and thinking is required to win against your enemy.\n\n-Speedrun / Challenges?: Speedruns and Challenges are mostly on singleplayer platform games. They require alot of precision, memory muscles and most importantly patience.";
@@ -187,6 +215,7 @@ class GamingActivity extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           alignment: Alignment.center,
+          color: Colors.black,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(11),
             child: LayoutBuilder(
@@ -195,12 +224,14 @@ class GamingActivity extends StatelessWidget {
                   return Image.asset(
                     _picPath,
                     fit: BoxFit.cover,
+                    width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
                   );
                 } else {
                   return Image.asset(
                     _picPath,
                     fit: BoxFit.fill,
+                    width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
                   );
                 }
@@ -266,7 +297,8 @@ class EditingActivity extends StatelessWidget {
   EditingActivity();
 
   final String _picPath = "assets/images/edit.png";
-  final String _contentText = "I like to watch alot of movies, animes and youtube videos which brought me into editing later. My goal behind my content is to entertain the viewer behind the screen, so i usually put alot of efforts into my videos (adding transitions, effects and clipping).\n\n\nThese are the tools i use for editing:\n\n- Sony Vegas and Adobe Premier for video-editing\n\n- Adobe Photoshop and 3D Paint for image-editing";
+  final String _contentText =
+      "I like to watch alot of movies, animes and youtube videos which brought me into editing later. My goal behind my content is to entertain the viewer behind the screen, so i usually put alot of efforts into my videos (adding transitions, effects and clipping).\n\n\nThese are the tools i use for editing:\n\n- Sony Vegas and Adobe Premier for video-editing\n\n- Adobe Photoshop and 3D Paint for image-editing";
 
   @override
   Widget build(BuildContext context) {
@@ -276,6 +308,7 @@ class EditingActivity extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
           alignment: Alignment.center,
+          color: Colors.black,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(11),
             child: LayoutBuilder(
@@ -284,12 +317,14 @@ class EditingActivity extends StatelessWidget {
                   return Image.asset(
                     _picPath,
                     fit: BoxFit.cover,
+                    width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
                   );
                 } else {
                   return Image.asset(
                     _picPath,
                     fit: BoxFit.fill,
+                    width: MediaQuery.of(context).size.width,
                     height: MediaQuery.of(context).size.height,
                   );
                 }
@@ -354,8 +389,89 @@ class EditingActivity extends StatelessWidget {
 class MusicActivity extends StatelessWidget {
   MusicActivity();
 
+  final String _picPath = "assets/images/music.jpg";
+  final String _contentText = "";
+
   @override
   Widget build(BuildContext context) {
-    return Text("Musician");
+    return Stack(
+      children: <Widget>[
+        Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          alignment: Alignment.center,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(11),
+            child: LayoutBuilder(
+              builder: (context, constraint) {
+                if (constraint.maxWidth < 720) {
+                  return Image.asset(
+                    _picPath,
+                    fit: BoxFit.cover,
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                  );
+                } else {
+                  return Image.asset(
+                    _picPath,
+                    fit: BoxFit.fill,
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                  );
+                }
+              },
+            ),
+          ),
+        ),
+        Container(
+          alignment: Alignment.centerLeft,
+          padding: EdgeInsets.only(left: 40, right: 20),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: LayoutBuilder(
+            builder: (context, constraint) {
+              if (constraint.maxWidth < 720) {
+                return SingleChildScrollView(
+                  child: Container(
+                    child: Text(
+                      "\n\n\n" + _contentText,
+                      textAlign: TextAlign.left,
+                      style: Theme.of(context).textTheme.subtitle1.copyWith(
+                        fontSize: 20,
+                        color: Color.fromRGBO(100, 255, 218, 1),
+                        fontFamily: "Terminal",
+                        shadows: [
+                          Shadow(
+                            color: Color.fromRGBO(100, 255, 218, 1),
+                            blurRadius: 5,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              } else {
+                return Text(
+                  _contentText,
+                  textAlign: TextAlign.left,
+                  style: Theme.of(context).textTheme.subtitle1.copyWith(
+                    fontSize: 30,
+                    color: Color.fromRGBO(100, 255, 218, 1),
+                    fontFamily: "Terminal",
+                    shadows: [
+                      Shadow(
+                        color: Color.fromRGBO(100, 255, 218, 1),
+                        blurRadius: 5,
+                      )
+                    ],
+                  ),
+                );
+              }
+            },
+          ),
+        ),
+      ],
+    );
   }
 }
