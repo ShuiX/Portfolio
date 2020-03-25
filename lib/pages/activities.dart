@@ -1,10 +1,7 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:portfolio/modules/LinearHalfCurve.dart';
 import 'package:portfolio/modules/animatedWindow.dart';
 import 'package:portfolio/modules/responsiveScreen.dart';
-import 'dart:ui' as ui;
 
 class Activities extends StatefulWidget {
   @override
@@ -20,30 +17,10 @@ class _ActivitiesState extends State<Activities> {
   bool _inPageState = false;
   Curve _curve = LinearHalfCurve().flipped;
   Widget _currentWidget;
-  Widget _iframeWidget;
-
-  final IFrameElement _iframeElement = IFrameElement();
 
   @override
   void initState() {
     super.initState();
-    _iframeElement.height = '300';
-    _iframeElement.width = '300';
-
-    _iframeElement.src = 'https://www.youtube.com/embed/RQzhAQlg2JQ';
-    _iframeElement.style.border = 'none';
-    _iframeElement.allow = "encrypted-media";
-
-    // ignore: undefined_prefixed_name
-    ui.platformViewRegistry.registerViewFactory(
-      'iframeElement',
-      (int viewId) => _iframeElement,
-    );
-
-    _iframeWidget = HtmlElementView(
-      key: UniqueKey(),
-      viewType: 'iframeElement',
-    );
     _timing();
   }
 
@@ -136,11 +113,6 @@ class _ActivitiesState extends State<Activities> {
                   tooltip: "Video Editing",
                   onPressed: () => _changeWidget("editing"),
                 ),
-                Container(
-                  height: 300,
-                  width: 300,
-                  child: _iframeWidget,
-                )
               ],
             ),
           ),
