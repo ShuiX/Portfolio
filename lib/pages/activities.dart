@@ -362,7 +362,7 @@ class MusicActivity extends StatelessWidget {
   MusicActivity();
 
   final String _picPath = "assets/images/music.jpg";
-  final String _contentText = "";
+  final String _contentText = "I like to compose some sound tracks on my own with my guitar depending on my mood.\nI get Inspiration mostly from LoFi, Rock and also from videogames / series.";
 
   @override
   Widget build(BuildContext context) {
@@ -396,8 +396,8 @@ class MusicActivity extends StatelessWidget {
           ),
         ),
         Container(
-          alignment: Alignment.centerLeft,
-          padding: EdgeInsets.only(left: 40, right: 20),
+          alignment: Alignment.center,
+          padding: EdgeInsets.symmetric(horizontal: 20),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -408,14 +408,14 @@ class MusicActivity extends StatelessWidget {
                   child: Container(
                     child: Text(
                       "\n\n\n" + _contentText,
-                      textAlign: TextAlign.left,
+                      textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.subtitle1.copyWith(
                         fontSize: 20,
-                        color: Color.fromRGBO(100, 255, 218, 1),
-                        fontFamily: "Terminal",
+                        color: Colors.pink,
+                        fontFamily: "Wonderland",
                         shadows: [
                           Shadow(
-                            color: Color.fromRGBO(100, 255, 218, 1),
+                            color: Colors.pink,
                             blurRadius: 5,
                           )
                         ],
@@ -429,11 +429,11 @@ class MusicActivity extends StatelessWidget {
                   textAlign: TextAlign.left,
                   style: Theme.of(context).textTheme.subtitle1.copyWith(
                     fontSize: 30,
-                    color: Color.fromRGBO(100, 255, 218, 1),
-                    fontFamily: "Terminal",
+                    color: Colors.pink,
+                    fontFamily: "Wonderland",
                     shadows: [
                       Shadow(
-                        color: Color.fromRGBO(100, 255, 218, 1),
+                        color: Colors.pink,
                         blurRadius: 5,
                       )
                     ],

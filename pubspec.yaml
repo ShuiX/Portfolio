@@ -88,5 +88,8 @@ flutter:
     - family: Terminal
       fonts:
         - asset: assets/fonts/terminal.ttf
+    - family: Wonderland
+      fonts:
+        - asset: assets/fonts/wonderland.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
