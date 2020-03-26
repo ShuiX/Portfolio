@@ -361,7 +361,7 @@ class EditingActivity extends StatelessWidget {
 class MusicActivity extends StatelessWidget {
   MusicActivity();
 
-  final String _picPath = "assets/images/music.jpg";
+  final String _picPath = "assets/images/music.png";
   final String _contentText = "I like to compose some sound tracks on my own with my guitar depending on my mood.\nI get Inspiration mostly from LoFi, Rock and also from videogames / series.";
 
   @override
@@ -410,7 +410,7 @@ class MusicActivity extends StatelessWidget {
                       "\n\n\n" + _contentText,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.subtitle1.copyWith(
-                        fontSize: 20,
+                        fontSize: 30,
                         color: Colors.pink,
                         fontFamily: "Wonderland",
                         shadows: [
@@ -428,7 +428,7 @@ class MusicActivity extends StatelessWidget {
                   _contentText,
                   textAlign: TextAlign.left,
                   style: Theme.of(context).textTheme.subtitle1.copyWith(
-                    fontSize: 30,
+                    fontSize: 40,
                     color: Colors.pink,
                     fontFamily: "Wonderland",
                     shadows: [
