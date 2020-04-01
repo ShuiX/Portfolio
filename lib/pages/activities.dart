@@ -3,6 +3,9 @@ import 'package:portfolio/modules/LinearHalfCurve.dart';
 import 'package:portfolio/modules/animatedWindow.dart';
 import 'package:portfolio/modules/responsiveScreen.dart';
 
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:js' as js;
+
 class Activities extends StatefulWidget {
   @override
   _ActivitiesState createState() => _ActivitiesState();
@@ -362,7 +365,17 @@ class MusicActivity extends StatelessWidget {
   MusicActivity();
 
   final String _picPath = "assets/images/music.png";
-  final String _contentText = "I like to compose some sound tracks on my own with my guitar depending on my mood.\nI get Inspiration mostly from LoFi, Rock and also from videogames / series.";
+  final String _contentText =
+      "I like to compose some sound tracks on my own or play in general with my guitar depending on my mood.\nI get Inspiration mostly from LoFi, Rock and also from videogames / series.";
+
+  void _openLink() {
+    js.context.callMethod(
+      "open",
+      [
+        "https://shajith-portfolio.web.app/assets/assets/audios/test.mp3"
+      ],
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -407,10 +420,10 @@ class MusicActivity extends StatelessWidget {
                 return SingleChildScrollView(
                   child: Container(
                     child: Text(
-                      "\n\n\n" + _contentText,
+                      _contentText,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.subtitle1.copyWith(
-                        fontSize: 30,
+                        fontSize: 25,
                         color: Colors.pink,
                         fontFamily: "Wonderland",
                         shadows: [
@@ -442,6 +455,55 @@ class MusicActivity extends StatelessWidget {
               }
             },
           ),
+        ),
+        Container(
+          padding: EdgeInsets.only(bottom: 50),
+          alignment: Alignment.bottomCenter,
+          child: LayoutBuilder(builder: (context, constraint) {
+            if (constraint.maxWidth < 720) {
+              return RaisedButton(
+                onPressed: _openLink,
+                color: Colors.transparent,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                child: Text(
+                  " Download Sample ",
+                  style: Theme.of(context).textTheme.subtitle1.copyWith(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.pink,
+                    shadows: [
+                      Shadow(
+                        color: Colors.pink,
+                        blurRadius: 7,
+                      )
+                    ],
+                  ),
+                ),
+              );
+            } else {
+              return RaisedButton(
+                onPressed: _openLink,
+                color: Colors.transparent,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30)),
+                child: Text(
+                  " Download Sample ",
+                  style: Theme.of(context).textTheme.subtitle1.copyWith(
+                    fontSize: 50,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.pink,
+                    shadows: [
+                      Shadow(
+                        color: Colors.pink,
+                        blurRadius: 7,
+                      )
+                    ],
+                  ),
+                ),
+              );
+            }
+          }),
         ),
       ],
     );
