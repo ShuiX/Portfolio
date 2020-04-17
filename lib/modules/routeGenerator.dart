@@ -9,6 +9,12 @@ class RouteGenerator {
     //Here getting the arguement pushed by navigator.push
 
     switch (settings.name) {
+      case '':
+        return MaterialPageRoute(
+            builder: (_) => PortfolioApp(
+                  title: 'Portfolio',
+                ));
+        break;
       case '/':
         return MaterialPageRoute(
             builder: (_) => PortfolioApp(
