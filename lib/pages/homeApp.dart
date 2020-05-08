@@ -138,7 +138,7 @@ class _PortfolioAppState extends State<PortfolioApp> {
             ),
             Container(
               color: Color.fromRGBO(100, 255, 218, 1),
-              width: MediaQuery.of(context).size.width * 0.6,
+              width: MediaQuery.of(context).size.width * 0.71,
               height: 2,
             ),
             LayoutBuilder(
@@ -154,6 +154,9 @@ class _PortfolioAppState extends State<PortfolioApp> {
                       Container(height: 20),
                       _itemButton(context, 0.6, "Activities",
                           Icons.bubble_chart, "/activities"),
+                      Container(height: 20),
+                      _itemButton(context, 0.6, "Contact",
+                          Icons.alternate_email, "/contact"),
                     ],
                   );
                 } else {
@@ -165,14 +168,17 @@ class _PortfolioAppState extends State<PortfolioApp> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
-                          this._itemButton(
-                              context, 0.2, "About", Icons.person, "/biography"),
+                          this._itemButton(context, 0.2, "About", Icons.person,
+                              "/biography"),
                           Container(width: 20),
                           this._itemButton(context, 0.2, "Projects", Icons.work,
                               "/projects"),
                           Container(width: 20),
                           this._itemButton(context, 0.2, "Activities",
                               Icons.bubble_chart, "/activities"),
+                          Container(width: 20),
+                          this._itemButton(context, 0.2, "Contact",
+                              Icons.alternate_email, "/contact"),
                         ],
                       ),
                     ],
@@ -254,7 +260,8 @@ class _PortfolioAppState extends State<PortfolioApp> {
             context: context,
             builder: (BuildContext context) => CustomDialog(
               title: "Portfolio",
-              content: "Made with Flutter by Shajith Shantharuban. Please report any issues from the website to my E-Mail: \"shajith@me.com\"",
+              content:
+                  "Made with Flutter by Shajith Shantharuban. Please report any issues from the website to my E-Mail: \"shajith@me.com\"",
               dialogType: "little",
             ),
           );

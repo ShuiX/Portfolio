@@ -42,11 +42,16 @@ class _ProjectsState extends State<Projects> {
           child: Container(
             alignment: Alignment.center,
             child: Text(
-              "My Projects",
-              style: Theme.of(context)
-                  .textTheme
-                  .headline6
-                  .copyWith(fontSize: this._responsiveScreen.titleSize),
+              " My Projects ",
+              style: Theme.of(context).textTheme.headline6.copyWith(
+                fontSize: this._responsiveScreen.titleSize,
+                shadows: [
+                  Shadow(
+                    color: Color.fromRGBO(100, 255, 218, 1),
+                    blurRadius: 5,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

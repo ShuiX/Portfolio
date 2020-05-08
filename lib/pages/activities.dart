@@ -82,11 +82,16 @@ class _ActivitiesState extends State<Activities> {
           alignment: _alignment,
           curve: Curves.easeInOut,
           child: Text(
-            "Activities",
-            style: Theme.of(context)
-                .textTheme
-                .headline6
-                .copyWith(fontSize: responsiveScreen.titleSize),
+            " Activities ",
+            style: Theme.of(context).textTheme.headline6.copyWith(
+              fontSize: responsiveScreen.titleSize,
+              shadows: [
+                Shadow(
+                  color: Color.fromRGBO(100, 255, 218, 1),
+                  blurRadius: 5,
+                ),
+              ],
+            ),
           ),
         ),
         Align(
