@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/pages/activities.dart';
 import 'package:portfolio/pages/biography.dart';
+import 'package:portfolio/pages/contact.dart';
 import 'package:portfolio/pages/homeApp.dart';
 import 'package:portfolio/pages/myProjects.dart';
 
@@ -35,7 +36,7 @@ class RouteGenerator {
           pageBuilder: (BuildContext context, _, __) => Activities(),
           opaque: false,
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return _animationBuilder(animation, child, 1.0, 0.0);
+            return _animationBuilder(animation, child, 0.0, 1.0);
           },
         );
         break;
@@ -45,6 +46,15 @@ class RouteGenerator {
           opaque: false,
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return _animationBuilder(animation, child, -1.0, 0.0);
+          },
+        );
+        break;
+      case '/contact':
+        return PageRouteBuilder(
+          pageBuilder: (BuildContext context, _, __) => Contact(),
+          opaque: false,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return _animationBuilder(animation, child, 1.0, 0.0);
           },
         );
         break;
