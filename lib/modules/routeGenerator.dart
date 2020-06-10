@@ -91,12 +91,10 @@ class RouteGenerator {
 
   static dynamic _animationBuilder(Animation<double> animation, Widget child,
       double bOffHor, double bOffVer) {
-    var begin = Offset(bOffHor, bOffVer);
-    var end = Offset.zero;
-    var curve = Curves.ease;
-    var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
     return SlideTransition(
-      position: animation.drive(tween),
+      position: animation.drive(
+          Tween(begin: Offset(bOffHor, bOffVer), end: Offset.zero)
+              .chain(CurveTween(curve: Curves.ease))),
       child: child,
     );
   }
