@@ -395,7 +395,7 @@ class ProjectSurvey extends StatelessWidget {
                       icon: Icon(Icons.arrow_forward),
                       onPressed: () => js.context.callMethod(
                         "open",
-                        ["https://flowsurvey-2020.web.app/#/startDemo"],
+                        ["https://flowsurvey-2020.web.app/#/startSurvey?sc=va"],
                       ),
                       iconSize: iconSize,
                       color: Colors.white,
