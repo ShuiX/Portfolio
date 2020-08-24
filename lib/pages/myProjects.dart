@@ -16,7 +16,11 @@ class _ProjectsState extends State<Projects> {
   double _opacity = 0;
   int _projectIndx = 0;
   ResponsiveScreen _responsiveScreen;
-  List<Widget> _projects = [ProjectSurvey(), ProjectRPG()];
+  List<Widget> _projects = [
+    ProjectPortfolio(),
+    ProjectSurvey(),
+    ProjectRPG(),
+  ];
 
   @override
   void initState() {
@@ -408,7 +412,7 @@ class ProjectSurvey extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               padding: EdgeInsets.only(bottom: 75, left: 20, right: 20),
               child: Text(
-                "//FlowSurvey is still a Work in Progress application and may include some bugs",
+                "//FlowSurvey is still a Work in Progress application",
                 style: Theme.of(context).textTheme.bodyText1.copyWith(
                       fontSize: responsiveScreen.subTitleSize * 0.75,
                       color: Colors.white,
@@ -417,6 +421,73 @@ class ProjectSurvey extends StatelessWidget {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    ResponsiveScreen responsiveScreen;
+    return LayoutBuilder(
+      builder: (context, constraint) {
+        if (constraint.maxWidth < 840) {
+          responsiveScreen = ResponsiveScreen(
+              titleSize: 30, subTitleSize: 20, widthFactor: 1, heightFactor: 1);
+          return this._content(context, responsiveScreen, 50);
+        } else {
+          responsiveScreen = ResponsiveScreen(
+              titleSize: 65, subTitleSize: 30, widthFactor: 1, heightFactor: 1);
+          return this._content(context, responsiveScreen, 100);
+        }
+      },
+    );
+  }
+}
+
+class ProjectPortfolio extends StatelessWidget {
+  ProjectPortfolio();
+
+  Widget _content(BuildContext context, ResponsiveScreen responsiveScreen,
+      double iconSize) {
+    return Card(
+      color: Colors.pink,
+      child: FractionallySizedBox(
+        heightFactor: responsiveScreen.heightFactor,
+        widthFactor: responsiveScreen.widthFactor,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                " this.portfolio ",
+                style: Theme.of(context).textTheme.headline6.copyWith(
+                  color: Colors.black,
+                  fontSize: responsiveScreen.titleSize,
+                  shadows: [
+                    Shadow(
+                      color: Colors.black,
+                      blurRadius: 5,
+                    ),
+                  ],
+                ),
+              ),
+              Text(
+                " < handmade project with flutter > ",
+                style: Theme.of(context).textTheme.headline6.copyWith(
+                  color: Colors.black,
+                  fontSize: responsiveScreen.subTitleSize,
+                  shadows: [
+                    Shadow(
+                      color: Colors.black,
+                      blurRadius: 5,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
